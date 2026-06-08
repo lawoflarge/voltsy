@@ -43,5 +43,8 @@ struct VoltsyWidget: Widget {
 
 @main
 struct VoltsyWidgetBundle: WidgetBundle {
-    var body: some Widget { VoltsyWidget() }
+    var body: some Widget {
+        VoltsyWidget()
+        VoltChargingLiveActivity()
+    }
 }
