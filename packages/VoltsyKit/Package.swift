@@ -8,11 +8,13 @@ let package = Package(
         .library(name: "VoltsyCore", targets: ["VoltsyCore"]),
         .library(name: "BatteryEngines", targets: ["BatteryEngines"]),
         .library(name: "BatteryStore", targets: ["BatteryStore"]),
+        .library(name: "VoltMascot", targets: ["VoltMascot"]),
     ],
     targets: [
         .target(name: "VoltsyCore"),
         .target(name: "BatteryEngines", dependencies: ["VoltsyCore"]),
         .target(name: "BatteryStore", dependencies: ["VoltsyCore"]),
+        .target(name: "VoltMascot", dependencies: ["VoltsyCore"]),
         .testTarget(name: "VoltsyCoreTests", dependencies: ["VoltsyCore"]),
         .testTarget(name: "BatteryEnginesTests", dependencies: ["BatteryEngines"]),
         .testTarget(name: "BatteryStoreTests", dependencies: ["BatteryStore"]),

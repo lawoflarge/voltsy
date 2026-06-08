@@ -3,6 +3,7 @@
 // via simulator screenshots without needing real battery states. Not shipped.
 import SwiftUI
 import VoltsyCore
+import VoltMascot
 
 struct VoltGalleryView: View {
     private let demos: [(String, VoltState)] = [

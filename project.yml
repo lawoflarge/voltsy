@@ -35,3 +35,5 @@ targets:
         product: BatteryEngines
       - package: VoltsyKit
         product: BatteryStore
+      - package: VoltsyKit
+        product: VoltMascot

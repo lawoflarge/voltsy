@@ -1,6 +1,7 @@
 // apps/Voltsy/Sources/Home/HomeView.swift
 import SwiftUI
 import VoltsyCore
+import VoltMascot
 import BatteryEngines
 
 struct HomeView: View {

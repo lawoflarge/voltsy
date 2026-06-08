@@ -2,6 +2,7 @@
 // "This week with Volt" recap card (spec §200) — screenshot-optimized for organic shares.
 import SwiftUI
 import VoltsyCore
+import VoltMascot
 import BatteryEngines
 
 struct WeeklyRecapView: View {
