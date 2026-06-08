@@ -1,6 +1,7 @@
 // apps/Voltsy/Sources/VoltsyApp.swift
 import SwiftUI
 import BatteryStore
+import Monetization
 
 @main
 struct VoltsyApp: App {
@@ -11,8 +12,9 @@ struct VoltsyApp: App {
         let store = (try? BatteryStore.local()) ?? BatteryStore.inMemoryFallback()
         return HomeViewModel(store: store)
     }()
+    @State private var proStore = ProStore()
 
     var body: some Scene {
-        WindowGroup { HomeView(model: model) }
+        WindowGroup { HomeView(model: model).environment(proStore) }
     }
 }

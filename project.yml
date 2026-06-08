@@ -43,6 +43,8 @@ targets:
         product: BatteryStore
       - package: VoltsyKit
         product: VoltMascot
+      - package: VoltsyKit
+        product: Monetization
       - target: VoltsyWidget
         embed: true
   VoltsyWidget:
@@ -68,3 +70,11 @@ targets:
         product: VoltsyCore
       - package: VoltsyKit
         product: VoltMascot
+schemes:
+  Voltsy:
+    build:
+      targets:
+        Voltsy: all
+    run:
+      config: Debug
+      storeKitConfiguration: Voltsy.storekit

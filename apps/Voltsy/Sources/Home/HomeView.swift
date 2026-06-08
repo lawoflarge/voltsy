@@ -3,10 +3,13 @@ import SwiftUI
 import VoltsyCore
 import VoltMascot
 import BatteryEngines
+import Monetization
 
 struct HomeView: View {
     @State var model: HomeViewModel
     @State private var showingRecap = false
+    @State private var showingPaywall = false
+    @Environment(ProStore.self) private var pro
 
     private var tintColor: Color {
         switch model.voltState.tint { case .green: .green; case .amber: .orange; case .red: .red }
@@ -42,6 +45,14 @@ struct HomeView: View {
                 }
                 .buttonStyle(.bordered)
 
+                if !pro.isPro {
+                    Button { showingPaywall = true } label: {
+                        Label("Go Pro — remove ads forever", systemImage: "sparkles")
+                            .font(.subheadline.weight(.semibold))
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+
                 Text("On-device estimate from your usage — not Apple's measured cycle count or capacity.")
                     .font(.caption).foregroundStyle(.secondary)
                     .multilineTextAlignment(.center).padding(.horizontal)
@@ -54,6 +65,7 @@ struct HomeView: View {
                                 streak: model.streak.current,
                                 badges: model.unlockedAchievements.count)
             }
+            .sheet(isPresented: $showingPaywall) { PaywallView(store: pro) }
         }
     }
 
