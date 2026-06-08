@@ -13,16 +13,8 @@ struct HomeView: View {
     var body: some View {
         TimelineView(.periodic(from: .now, by: 5)) { _ in
             VStack(spacing: 24) {
-                // Placeholder "Volt" — replaced by the real vector mascot in Plan 2.
-                ZStack(alignment: .bottom) {
-                    RoundedRectangle(cornerRadius: 28).stroke(tintColor, lineWidth: 4)
-                    RoundedRectangle(cornerRadius: 24)
-                        .fill(tintColor.opacity(0.5))
-                        .frame(height: 180 * model.voltState.bellyFill)
-                        .padding(6)
-                }
-                .frame(width: 120, height: 180)
-                .overlay(Text(emoji(model.voltState.mood)).font(.system(size: 48)))
+                VoltView(state: model.voltState, size: 200)
+                    .frame(height: 210)
 
                 Text(model.voltState.mood.rawValue.capitalized).font(.title2.bold())
 
@@ -58,10 +50,4 @@ struct HomeView: View {
         .background(.quaternary, in: RoundedRectangle(cornerRadius: 16))
     }
 
-    private func emoji(_ mood: VoltMood) -> String {
-        switch mood {
-        case .energetic: "😄"; case .content: "🙂"; case .tired: "🥱"; case .critical: "😵"
-        case .charging: "😋"; case .overcharged: "🤢"; case .overheating: "🥵"; case .zen: "😌"
-        }
-    }
 }
