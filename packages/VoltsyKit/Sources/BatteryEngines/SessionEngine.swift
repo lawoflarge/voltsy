@@ -3,7 +3,7 @@ import Foundation
 import VoltsyCore
 
 public enum SessionEngine {
-    public static let gapThreshold: TimeInterval = 6 * 60 * 60   // 6 hours
+    public static let gapThreshold: TimeInterval = 30 * 60   // 30 minutes
 
     private static func kind(for state: BatteryChargeState) -> BatterySession.Kind? {
         switch state {
