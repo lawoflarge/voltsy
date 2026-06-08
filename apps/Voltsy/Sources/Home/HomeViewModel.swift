@@ -17,12 +17,15 @@ final class HomeViewModel {
         StreakState(current: 0, longest: 0, tokensRemaining: 1, frozeMostRecentDay: false)
     private(set) var greenShareToday: Double = 0
     private(set) var unlockedAchievements: Set<Achievement> = []
+    private(set) var weeklyGreenShare: Double = 0
+    private let notifications = VoltNotifications()
 
     init(store: BatteryStore) {
         self.store = store
         self.monitor = BatteryMonitor { [weak self] sample in
             self?.ingest(sample)
         }
+        notifications.requestPermissionIfNeeded()
     }
 
     func tick() { monitor.refresh() }
@@ -69,5 +72,11 @@ final class HomeViewModel {
             badges.formUnion(AchievementsEngine.earned(daySamples: daySamples, streak: displayCurrent))
         }
         unlockedAchievements = badges
+
+        // Weekly recap (last 7 days) + daily evening streak nudge.
+        let weekAgo = cal.date(byAdding: .day, value: -7, to: today)!
+        weeklyGreenShare = GreenZoneEngine.weeklyGreenShare(
+            samples: recent.filter { $0.timestamp >= weekAgo }, calendar: cal)
+        notifications.scheduleEveningStreakReminder(streak: displayCurrent)
     }
 }
