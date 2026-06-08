@@ -4,16 +4,30 @@ import SwiftUI
 import VoltsyCore
 import VoltMascot
 import BatteryEngines
+import Monetization
 
 struct WeeklyRecapView: View {
     let voltState: VoltState
     let weeklyGreenShare: Double
     let streak: Int
     let badges: Int
+    @Environment(ProStore.self) private var pro
+    @Environment(ConsentManager.self) private var consent
 
     private var healthyPercent: Int { Int((weeklyGreenShare * 100).rounded()) }
 
     var body: some View {
+        VStack(spacing: 0) {
+            recapCard
+            if AdGate.shouldShowAds(isPro: pro.isPro, hasConsent: consent.canShowAds,
+                                    completedSessions: consent.sessionCount,
+                                    graceSessions: AdConfig.graceSessions) {
+                AdBanner(adUnitID: AdConfig.bannerUnitID).frame(height: 60)
+            }
+        }
+    }
+
+    private var recapCard: some View {
         VStack(spacing: 20) {
             Text("This week with Volt").font(.title2.bold())
             VoltView(state: voltState, size: 160).frame(height: 170)

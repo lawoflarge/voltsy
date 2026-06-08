@@ -13,6 +13,12 @@ settings:
 packages:
   VoltsyKit:
     path: packages/VoltsyKit
+  GoogleMobileAds:
+    url: https://github.com/googleads/swift-package-manager-google-mobile-ads
+    from: "13.0.0"
+  UserMessagingPlatform:
+    url: https://github.com/googleads/swift-package-manager-google-user-messaging-platform
+    from: "3.0.0"
 targets:
   Voltsy:
     type: application
@@ -45,6 +51,10 @@ targets:
         product: VoltMascot
       - package: VoltsyKit
         product: Monetization
+      - package: GoogleMobileAds
+        product: GoogleMobileAds
+      - package: UserMessagingPlatform
+        product: GoogleUserMessagingPlatform
       - target: VoltsyWidget
         embed: true
   VoltsyWidget:

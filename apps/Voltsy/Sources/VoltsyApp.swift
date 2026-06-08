@@ -13,8 +13,13 @@ struct VoltsyApp: App {
         return HomeViewModel(store: store)
     }()
     @State private var proStore = ProStore()
+    @State private var consent = ConsentManager()
 
     var body: some Scene {
-        WindowGroup { HomeView(model: model).environment(proStore) }
+        WindowGroup {
+            HomeView(model: model)
+                .environment(proStore)
+                .environment(consent)
+        }
     }
 }
