@@ -25,6 +25,7 @@ private struct VoltPalette {
 }
 
 private let inkColor = Color(red: 0.15, green: 0.19, blue: 0.25)
+private let limbColor = Color(red: 0.87, green: 0.90, blue: 0.93)
 
 // MARK: - VoltView
 
@@ -52,7 +53,7 @@ public struct VoltView: View {
             legs
             arms
             bodyShell
-            face.offset(y: -bodyH * 0.07)
+            face.offset(y: -bodyH * 0.06)
             accessory
         }
         .frame(width: size, height: size)
@@ -70,6 +71,8 @@ public struct VoltView: View {
                 .offset(y: -bodyH * 0.525)
             ZStack(alignment: .bottom) {
                 shape.fill(Color(red: 0.96, green: 0.98, blue: 0.99))
+                // faint full-body tint so a nearly-empty Volt still reads its health color
+                shape.fill(p.fillBottom.opacity(0.14))
                 LinearGradient(colors: [p.fillTop, p.fillBottom], startPoint: .top, endPoint: .bottom)
                     .frame(width: bodyW, height: bodyH * fill)
                     .overlay(alignment: .top) {
@@ -91,56 +94,55 @@ public struct VoltView: View {
     // MARK: Face
 
     private var face: some View {
-        let eyeW = bodyW * 0.21
-        let gap = bodyW * 0.18
-        return VStack(spacing: bodyH * 0.03) {
+        let eyeW = bodyW * 0.30
+        let gap = bodyW * 0.13
+        return VStack(spacing: bodyH * 0.025) {
             ZStack {
                 HStack(spacing: gap) { eye(eyeW); eye(eyeW) }
                 if mood == .energetic || mood == .charging || mood == .content {
-                    HStack(spacing: gap + eyeW * 1.1) {
-                        cheek; cheek
-                    }
-                    .offset(y: eyeW * 0.7)
+                    HStack(spacing: bodyW * 0.46) { cheek; cheek }
+                        .offset(y: eyeW * 0.6)
                 }
             }
-            mouth.frame(width: bodyW * 0.34, height: bodyH * 0.13)
+            mouth.frame(width: bodyW * 0.34, height: bodyH * 0.12)
         }
     }
 
     private var cheek: some View {
-        Circle().fill(Color(red: 1.0, green: 0.6, blue: 0.62).opacity(0.6))
-            .frame(width: bodyW * 0.12, height: bodyW * 0.09)
+        Ellipse().fill(Color(red: 1.0, green: 0.58, blue: 0.6).opacity(0.55))
+            .frame(width: bodyW * 0.13, height: bodyW * 0.09)
     }
 
     @ViewBuilder private func eye(_ w: CGFloat) -> some View {
         switch mood {
         case .charging, .zen, .content:
-            ArcEye().stroke(inkColor, style: .init(lineWidth: w * 0.20, lineCap: .round))
-                .frame(width: w, height: w * 0.55)
+            ArcEye().stroke(inkColor, style: .init(lineWidth: w * 0.18, lineCap: .round))
+                .frame(width: w * 0.95, height: w * 0.5)
         case .critical:
-            XEye().stroke(inkColor, style: .init(lineWidth: w * 0.18, lineCap: .round))
-                .frame(width: w * 0.9, height: w * 0.9)
+            XEye().stroke(inkColor, style: .init(lineWidth: w * 0.16, lineCap: .round))
+                .frame(width: w * 0.8, height: w * 0.8)
         case .tired:
+            // sleepy half-moon: lower half of the eye only, no harsh lid bar
             ZStack(alignment: .bottom) {
-                Ellipse().fill(Color.white).frame(width: w, height: w)
-                Circle().fill(inkColor).frame(width: w * 0.5, height: w * 0.5)
+                Ellipse().fill(Color.white).frame(width: w, height: w * 1.05)
+                Circle().fill(inkColor).frame(width: w * 0.5, height: w * 0.5).offset(y: -w * 0.02)
             }
-            .frame(width: w, height: w * 0.5, alignment: .bottom)
+            .frame(width: w, height: w * 0.46, alignment: .bottom)
             .clipped()
-            .overlay(alignment: .top) {
-                Capsule().fill(inkColor).frame(width: w, height: w * 0.13)
-            }
         case .overcharged, .overheating:
             ZStack {
-                Ellipse().fill(Color.white).frame(width: w, height: w * 0.85)
-                Circle().fill(inkColor).frame(width: w * 0.42, height: w * 0.42)
+                Ellipse().fill(Color.white).frame(width: w * 0.92, height: w * 0.82)
+                Circle().fill(inkColor).frame(width: w * 0.4, height: w * 0.4)
             }
         default:
+            // big, bright, baby-schema eye with two highlights
             ZStack {
-                Ellipse().fill(Color.white).frame(width: w, height: w * 1.05)
-                Circle().fill(inkColor).frame(width: w * 0.55, height: w * 0.55).offset(y: w * 0.05)
-                Circle().fill(Color.white).frame(width: w * 0.20, height: w * 0.20)
-                    .offset(x: -w * 0.12, y: -w * 0.08)
+                Ellipse().fill(Color.white).frame(width: w, height: w * 1.08)
+                Circle().fill(inkColor).frame(width: w * 0.62, height: w * 0.62).offset(y: w * 0.06)
+                Circle().fill(Color.white).frame(width: w * 0.26, height: w * 0.26)
+                    .offset(x: -w * 0.14, y: -w * 0.10)
+                Circle().fill(Color.white.opacity(0.85)).frame(width: w * 0.13, height: w * 0.13)
+                    .offset(x: w * 0.13, y: w * 0.12)
             }
         }
     }
@@ -154,7 +156,7 @@ public struct VoltView: View {
                 .frame(height: bodyH * 0.05)
         case .tired:
             Circle().fill(Color(red: 0.52, green: 0.20, blue: 0.22))
-                .frame(width: bodyW * 0.12, height: bodyW * 0.14)
+                .frame(width: bodyW * 0.11, height: bodyW * 0.13)
         case .critical, .overcharged, .overheating:
             Wavy().stroke(inkColor, style: .init(lineWidth: bodyW * 0.035, lineCap: .round))
                 .frame(height: bodyH * 0.05)
@@ -167,26 +169,30 @@ public struct VoltView: View {
     // MARK: Limbs
 
     private var arms: some View {
-        let armL = bodyH * 0.30
         let up = mood == .energetic || mood == .charging
-        return HStack {
-            Capsule().fill(Color(red: 0.86, green: 0.89, blue: 0.92))
-                .frame(width: armL * 0.32, height: armL)
-                .rotationEffect(.degrees(up ? -35 : (mood == .tired ? 18 : -8)), anchor: .top)
-                .offset(x: -bodyW * 0.04, y: up ? -bodyH * 0.05 : bodyH * 0.05)
-            Spacer()
-            Capsule().fill(Color(red: 0.86, green: 0.89, blue: 0.92))
-                .frame(width: armL * 0.32, height: armL)
-                .rotationEffect(.degrees(up ? 35 : (mood == .tired ? -18 : 8)), anchor: .top)
-                .offset(x: bodyW * 0.04, y: up ? -bodyH * 0.05 : bodyH * 0.05)
+        return ZStack {
+            arm(left: true, raised: up)
+            arm(left: false, raised: up)
         }
-        .frame(width: bodyW * 1.35)
+    }
+
+    @ViewBuilder private func arm(left: Bool, raised: Bool) -> some View {
+        let sign: CGFloat = left ? -1 : 1
+        let len = bodyH * 0.22
+        ZStack(alignment: .bottom) {
+            Capsule().fill(limbColor).frame(width: len * 0.40, height: len)
+            Circle().fill(limbColor)                       // mitten hand
+                .frame(width: len * 0.60, height: len * 0.60)
+                .offset(y: len * 0.32)
+        }
+        .rotationEffect(.degrees(Double(sign) * (raised ? -42 : 20)), anchor: .top)
+        .offset(x: sign * bodyW * 0.50, y: raised ? -bodyH * 0.12 : bodyH * 0.05)
     }
 
     private var legs: some View {
         HStack(spacing: bodyW * 0.18) {
-            Capsule().fill(inkColor.opacity(0.85)).frame(width: bodyW * 0.16, height: bodyH * 0.14)
-            Capsule().fill(inkColor.opacity(0.85)).frame(width: bodyW * 0.16, height: bodyH * 0.14)
+            Capsule().fill(inkColor.opacity(0.85)).frame(width: bodyW * 0.17, height: bodyH * 0.14)
+            Capsule().fill(inkColor.opacity(0.85)).frame(width: bodyW * 0.17, height: bodyH * 0.14)
         }
         .offset(y: bodyH * 0.50)
     }
@@ -198,18 +204,18 @@ public struct VoltView: View {
         case .overheating:
             SweatDrop().fill(Color(red: 0.45, green: 0.78, blue: 0.98))
                 .frame(width: bodyW * 0.12, height: bodyW * 0.18)
-                .offset(x: bodyW * 0.34, y: -bodyH * 0.18)
+                .offset(x: bodyW * 0.34, y: -bodyH * 0.16)
         case .energetic:
             HStack(spacing: bodyW * 1.0) { spark; spark }
                 .offset(y: -bodyH * 0.42)
         case .zen:
             Text("z z z").font(.system(size: size * 0.07, weight: .bold))
                 .foregroundStyle(inkColor.opacity(0.5))
-                .offset(x: bodyW * 0.4, y: -bodyH * 0.4)
+                .offset(x: bodyW * 0.42, y: -bodyH * 0.4)
         case .charging:
             Image(systemName: "bolt.fill").font(.system(size: size * 0.10))
                 .foregroundStyle(Color.yellow)
-                .offset(x: bodyW * 0.44, y: -bodyH * 0.02)
+                .offset(x: bodyW * 0.46, y: -bodyH * 0.02)
         default:
             EmptyView()
         }
