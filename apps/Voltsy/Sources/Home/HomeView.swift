@@ -13,14 +13,26 @@ struct HomeView: View {
     var body: some View {
         TimelineView(.periodic(from: .now, by: 5)) { _ in
             VStack(spacing: 24) {
-                VoltView(state: model.voltState, size: 200)
-                    .frame(height: 210)
+                ZStack {
+                    // "Keep it 20–80%" challenge ring — fills with today's green-zone share.
+                    Circle()
+                        .trim(from: 0, to: model.greenShareToday)
+                        .stroke(tintColor.opacity(0.7),
+                                style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                        .rotationEffect(.degrees(-90))
+                        .frame(width: 232, height: 232)
+                        .animation(.easeInOut, value: model.greenShareToday)
+                    VoltView(state: model.voltState, size: 200)
+                }
+                .frame(height: 240)
 
                 Text(model.voltState.mood.rawValue.capitalized).font(.title2.bold())
 
                 streakRow
 
                 careCard
+
+                achievementsRow
 
                 Text("On-device estimate from your usage — not Apple's measured cycle count or capacity.")
                     .font(.caption).foregroundStyle(.secondary)
@@ -63,6 +75,44 @@ struct HomeView: View {
         } else {
             Label("Keep Volt healthy to start a streak", systemImage: "flame")
                 .font(.subheadline).foregroundStyle(.secondary)
+        }
+    }
+
+    @ViewBuilder private var achievementsRow: some View {
+        if model.unlockedAchievements.isEmpty {
+            Label("Earn badges by keeping Volt healthy", systemImage: "rosette")
+                .font(.caption).foregroundStyle(.secondary)
+        } else {
+            HStack(spacing: 16) {
+                ForEach(Achievement.allCases.filter { model.unlockedAchievements.contains($0) },
+                        id: \.self) { badge in
+                    VStack(spacing: 3) {
+                        Image(systemName: badgeIcon(badge)).font(.title3)
+                        Text(badgeName(badge)).font(.caption2)
+                    }
+                    .foregroundStyle(.primary)
+                }
+            }
+        }
+    }
+
+    private func badgeIcon(_ a: Achievement) -> String {
+        switch a {
+        case .goldilocks: "circle.lefthalf.filled"
+        case .coolCustomer: "snowflake"
+        case .noDrama: "checkmark.seal.fill"
+        case .nightOwlReformed: "moon.stars.fill"
+        case .centenarian: "100.circle.fill"
+        }
+    }
+
+    private func badgeName(_ a: Achievement) -> String {
+        switch a {
+        case .goldilocks: "Goldilocks"
+        case .coolCustomer: "Cool"
+        case .noDrama: "No Drama"
+        case .nightOwlReformed: "Night Owl"
+        case .centenarian: "100-day"
         }
     }
 }
