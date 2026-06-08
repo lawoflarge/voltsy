@@ -28,6 +28,11 @@ targets:
         GENERATE_INFOPLIST_FILE: NO
         ENABLE_USER_SCRIPT_SANDBOXING: YES
         TARGETED_DEVICE_FAMILY: "1"
+      configs:
+        Release:
+          CODE_SIGN_STYLE: Manual
+          CODE_SIGN_IDENTITY: "Apple Distribution"
+          PROVISIONING_PROFILE_SPECIFIER: "Voltsy AppStore"
     dependencies:
       - package: VoltsyKit
         product: VoltsyCore
@@ -51,6 +56,11 @@ targets:
         CODE_SIGN_ENTITLEMENTS: apps/VoltsyWidget/VoltsyWidget.entitlements
         GENERATE_INFOPLIST_FILE: NO
         TARGETED_DEVICE_FAMILY: "1"
+      configs:
+        Release:
+          CODE_SIGN_STYLE: Manual
+          CODE_SIGN_IDENTITY: "Apple Distribution"
+          PROVISIONING_PROFILE_SPECIFIER: "Voltsy Widget AppStore"
     dependencies:
       - package: VoltsyKit
         product: VoltsyCore
