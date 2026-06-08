@@ -5,6 +5,7 @@ import BatteryEngines
 
 struct HomeView: View {
     @State var model: HomeViewModel
+    @State private var showingRecap = false
 
     private var tintColor: Color {
         switch model.voltState.tint { case .green: .green; case .amber: .orange; case .red: .red }
@@ -34,12 +35,24 @@ struct HomeView: View {
 
                 achievementsRow
 
+                Button { showingRecap = true } label: {
+                    Label("This week with Volt", systemImage: "square.and.arrow.up")
+                        .font(.subheadline.weight(.semibold))
+                }
+                .buttonStyle(.bordered)
+
                 Text("On-device estimate from your usage — not Apple's measured cycle count or capacity.")
                     .font(.caption).foregroundStyle(.secondary)
                     .multilineTextAlignment(.center).padding(.horizontal)
             }
             .padding()
             .onAppear { model.tick() }
+            .sheet(isPresented: $showingRecap) {
+                WeeklyRecapView(voltState: model.voltState,
+                                weeklyGreenShare: model.weeklyGreenShare,
+                                streak: model.streak.current,
+                                badges: model.unlockedAchievements.count)
+            }
         }
     }
 
