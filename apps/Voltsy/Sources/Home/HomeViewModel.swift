@@ -20,6 +20,9 @@ final class HomeViewModel {
     private(set) var unlockedAchievements: Set<Achievement> = []
     private(set) var weeklyGreenShare: Double = 0
     private let notifications = VoltNotifications()
+    #if canImport(ActivityKit)
+    private let liveActivity = ChargingActivityController()
+    #endif
 
     init(store: BatteryStore) {
         self.store = store
@@ -81,5 +84,9 @@ final class HomeViewModel {
         weeklyGreenShare = GreenZoneEngine.weeklyGreenShare(
             samples: recent.filter { $0.timestamp >= weekAgo }, calendar: cal)
         notifications.scheduleEveningStreakReminder(streak: displayCurrent)
+
+        #if canImport(ActivityKit)
+        liveActivity.sync(samples: recent, voltState: voltState)
+        #endif
     }
 }
