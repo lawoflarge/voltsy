@@ -2,10 +2,15 @@
 // Drives the charging Live Activity from the live sample stream: start on plug-in,
 // update as the charge/ETA changes, end on unplug. Local updates only (no push).
 //
-// Concurrency note: `Activity` is not treated as Sendable by the strict-concurrency checker,
-// so we never hold it as a main-actor-isolated property. The lifecycle is gated by a MainActor
-// `started` flag; update/end run in nonisolated Tasks that fetch the current activity from the
-// static `Activity.activities` list, so no main-actor-isolated value crosses an isolation domain.
+// State is read from ActivityKit itself (`Activity.activities`), not a private flag, so the
+// controller self-heals: it never spawns a duplicate after an app relaunch mid-charge, and a
+// user-dismissed activity is re-created on the next charging sample rather than going silent.
+//
+// Concurrency: `Activity` is not treated as Sendable by the strict-concurrency checker, so we
+// never let a main-actor-isolated `Activity` value cross into a nonisolated `update`/`end` call.
+// Existence is checked via a Bool (`activities.isEmpty`); the activity itself is fetched *inside*
+// the nonisolated Task. sync() is MainActor-serialized and samples arrive seconds apart, so the
+// fire-and-forget update/end Tasks cannot realistically interleave — no serial queue needed for v1.
 #if canImport(ActivityKit)
 import Foundation
 import ActivityKit
@@ -14,7 +19,9 @@ import BatteryEngines
 
 @MainActor
 final class ChargingActivityController {
-    private var started = false
+    /// If no update arrives within this window (e.g. the app is killed mid-charge), the system
+    /// marks the activity stale and dims it — honest about not having fresh data.
+    private static let staleAfter: TimeInterval = 60 * 60
 
     func sync(samples: [BatterySample], voltState: VoltState) {
         guard let latest = samples.filter({ $0.isLevelKnown })
@@ -26,30 +33,35 @@ final class ChargingActivityController {
             let eta = ChargeEstimateEngine.minutesToLevel(toFull ? 1.0 : 0.8, from: samples)
             present(VoltActivityAttributes.ContentState(
                 voltState: voltState, percent: latest.percent,
-                etaMinutes: eta, targetIsFull: toFull, isComplete: false))
+                etaMinutes: eta, targetIsFull: toFull, isComplete: false),
+                startIfAbsent: true)
         case .full:
             present(VoltActivityAttributes.ContentState(
                 voltState: voltState, percent: 100,
-                etaMinutes: nil, targetIsFull: true, isComplete: true))
+                etaMinutes: nil, targetIsFull: true, isComplete: true),
+                startIfAbsent: false)   // don't spawn a banner for an already-full battery
         case .unplugged, .unknown:
-            if started { started = false; Self.endAll() }
+            Self.endAll()
         }
     }
 
-    private func present(_ content: VoltActivityAttributes.ContentState) {
-        if started {
+    private func present(_ content: VoltActivityAttributes.ContentState, startIfAbsent: Bool) {
+        if !Activity<VoltActivityAttributes>.activities.isEmpty {
             Self.updateCurrent(content)
-        } else if ActivityAuthorizationInfo().areActivitiesEnabled {
-            started = (try? Activity.request(
+        } else if startIfAbsent, ActivityAuthorizationInfo().areActivitiesEnabled {
+            _ = try? Activity.request(
                 attributes: VoltActivityAttributes(),
-                content: ActivityContent(state: content, staleDate: nil))) != nil
+                content: ActivityContent(state: content, staleDate: Self.stale()))
         }
     }
+
+    private static func stale() -> Date { Date().addingTimeInterval(staleAfter) }
 
     private static func updateCurrent(_ content: VoltActivityAttributes.ContentState) {
+        let staleDate = stale()
         Task {
             guard let activity = Activity<VoltActivityAttributes>.activities.first else { return }
-            await activity.update(ActivityContent(state: content, staleDate: nil))
+            await activity.update(ActivityContent(state: content, staleDate: staleDate))
         }
     }
 

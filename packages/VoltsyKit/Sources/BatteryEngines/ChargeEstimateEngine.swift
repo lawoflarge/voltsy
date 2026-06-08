@@ -22,9 +22,11 @@ public enum ChargeEstimateEngine {
     /// Estimated whole minutes from the latest known level to `target` (0...1) at the current
     /// charge rate. nil when not charging, already at/above target, or the rate isn't trustworthy.
     public static func minutesToLevel(_ target: Double, from samples: [BatterySample]) -> Int? {
-        let known = samples.filter { $0.isLevelKnown }.sorted { $0.timestamp < $1.timestamp }
-        guard let current = known.last?.level, current < target else { return nil }
+        // Compute the rate first: it early-exits in the common not-charging case before we
+        // bother finding the current level (no redundant second filter/sort of the window).
         guard let rate = chargeRatePerMinute(from: samples) else { return nil }
+        guard let current = samples.filter({ $0.isLevelKnown })
+            .max(by: { $0.timestamp < $1.timestamp })?.level, current < target else { return nil }
         // Round to the nearest minute (the ETA is shown as "≈"): ceil would amplify the
         // tiny floating-point error in the level subtraction into a spurious extra minute.
         return max(1, Int(((target - current) / rate).rounded()))
