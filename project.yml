@@ -1,0 +1,36 @@
+name: Voltsy
+options:
+  bundleIdPrefix: com.lawoflarge
+  deploymentTarget:
+    iOS: "26.0"
+  developmentLanguage: en
+settings:
+  base:
+    DEVELOPMENT_TEAM: R95M36AU2X
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+packages:
+  VoltsyKit:
+    path: packages/VoltsyKit
+targets:
+  Voltsy:
+    type: application
+    platform: iOS
+    sources:
+      - path: apps/Voltsy/Sources
+      - path: apps/Voltsy/Resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lawoflarge.voltsy
+        INFOPLIST_FILE: apps/Voltsy/Resources/Info.plist
+        CODE_SIGN_ENTITLEMENTS: apps/Voltsy/Voltsy.entitlements
+        GENERATE_INFOPLIST_FILE: NO
+        ENABLE_USER_SCRIPT_SANDBOXING: YES
+    dependencies:
+      - package: VoltsyKit
+        product: VoltsyCore
+      - package: VoltsyKit
+        product: BatteryEngines
+      - package: VoltsyKit
+        product: BatteryStore
