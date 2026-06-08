@@ -44,8 +44,14 @@ struct HomeView: View {
             case .insufficient:
                 Text("Getting to know your battery…").foregroundStyle(.secondary)
             case .estimating:
-                Text("\(model.careScore.value ?? 0)").font(.system(size: 44, weight: .bold))
-                    .foregroundStyle(tintColor)
+                // Honest-estimate invariant: never render a fabricated number — only show
+                // a score when the engine actually produced one.
+                if let value = model.careScore.value {
+                    Text("\(value)").font(.system(size: 44, weight: .bold))
+                        .foregroundStyle(tintColor)
+                } else {
+                    Text("Getting to know your battery…").foregroundStyle(.secondary)
+                }
             }
         }
         .padding().frame(maxWidth: .infinity)
