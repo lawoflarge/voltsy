@@ -3,7 +3,7 @@ import Foundation
 import VoltsyCore
 
 public enum CareScoreEngine {
-    public static let minCyclesForScore: Double = 1.5
+    public static let minCyclesForScore: Double = 3
     public static let heatPenaltyPerMinute = 0.05      // minutes at thermal >= serious
     public static let deepDischargePenalty = 4.0       // per discharge session ending <= 5%
     public static let overchargeGraceMinutes = 60.0
