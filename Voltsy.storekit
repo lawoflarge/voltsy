@@ -1,0 +1,34 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : []
+  },
+  "identifier" : "A1B2C3D4",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "4.99",
+      "familyShareable" : false,
+      "internalID" : "PRO00001",
+      "localizations" : [
+        {
+          "description" : "Remove all ads forever and unlock history, advanced insights, and cosmetics.",
+          "displayName" : "Voltsy Pro",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.lawoflarge.voltsy.pro",
+      "referenceName" : "Voltsy Pro",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6778094814",
+    "_developerTeamID" : "R95M36AU2X"
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}
