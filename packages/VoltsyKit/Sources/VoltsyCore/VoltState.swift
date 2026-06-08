@@ -9,7 +9,7 @@ public enum VoltMood: String, Codable, Sendable, Equatable, CaseIterable {
     case zen              // Low Power Mode
 }
 
-public struct VoltState: Sendable, Equatable, Codable {
+public struct VoltState: Sendable, Equatable, Codable, Hashable {
     public let mood: VoltMood
     public let bellyFill: Double        // 0...1 — what the mascot renders
     public let tint: HealthTint
