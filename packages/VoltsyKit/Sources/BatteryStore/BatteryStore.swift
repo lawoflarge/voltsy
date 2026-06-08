@@ -19,6 +19,16 @@ public final class BatteryStore {
         return BatteryStore(container: container)
     }
 
+    /// Persistent on-device store in the app sandbox. Used until the App Group is
+    /// provisioned; the Widget/Live Activity will switch back to `shared()`.
+    public static func local() throws -> BatteryStore {
+        let dir = URL.applicationSupportDirectory
+        try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        let config = ModelConfiguration(url: dir.appending(path: "Voltsy.store"))
+        let container = try ModelContainer(for: BatterySampleRecord.self, configurations: config)
+        return BatteryStore(container: container)
+    }
+
     /// In-memory store so a missing App Group entitlement never crashes launch.
     public static func inMemoryFallback() -> BatteryStore {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
