@@ -51,8 +51,8 @@ public struct VoltView: View {
                 .frame(width: bodyW * 0.92, height: bodyW * 0.16)
                 .offset(y: bodyH * 0.56)
             legs
-            arms
             bodyShell
+            arms
             face.offset(y: -bodyH * 0.06)
             accessory
         }
@@ -185,8 +185,9 @@ public struct VoltView: View {
                 .frame(width: len * 0.60, height: len * 0.60)
                 .offset(y: len * 0.32)
         }
-        .rotationEffect(.degrees(Double(sign) * (raised ? -42 : 20)), anchor: .top)
-        .offset(x: sign * bodyW * 0.50, y: raised ? -bodyH * 0.12 : bodyH * 0.05)
+        .rotationEffect(.degrees(Double(sign) * (raised ? -45 : 28)), anchor: .top)
+        .offset(x: sign * bodyW * (raised ? 0.46 : 0.54),
+                y: raised ? -bodyH * 0.14 : bodyH * 0.10)
     }
 
     private var legs: some View {
