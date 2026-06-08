@@ -34,7 +34,30 @@ final class HomeViewModel {
                                         thermal: sample.thermal, lowPowerMode: sample.lowPowerMode,
                                         minutesAtFull: minutesFull, tint: score.tint)
         careScore = score
-        let outcomes = StreakAssembler.dayOutcomes(from: recent)
-        streak = StreakEngine.compute(dayOutcomes: outcomes, freezeTokens: 1)
+        // Finalize completed days (strictly before today, with data) into the persisted ledger.
+        let cal = Calendar.current
+        let today = cal.startOfDay(for: Date())
+        var progress = store.loadStreakProgress()
+        let lastFinal = progress.lastFinalizedDay
+        let byDay = Dictionary(grouping: recent.filter { $0.isLevelKnown }) {
+            cal.startOfDay(for: $0.timestamp)
+        }
+        let completed = byDay.keys
+            .filter { $0 < today && (lastFinal == nil || $0 > lastFinal!) }
+            .sorted()
+            .map { (day: $0, healthy: DayHealthEvaluator.evaluate(daySamples: byDay[$0]!).isHealthy) }
+        progress = StreakLedgerEngine.advance(progress, completedDays: completed,
+                                              capacity: 1, calendar: cal)
+        try? store.saveStreakProgress(progress)
+
+        // Display: finalized streak + provisional +1 if today is already healthy.
+        let todaySamples = byDay[today] ?? []
+        let todayHealthy = !todaySamples.isEmpty
+            && DayHealthEvaluator.evaluate(daySamples: todaySamples).isHealthy
+        let displayCurrent = progress.currentStreak + (todayHealthy ? 1 : 0)
+        streak = StreakState(current: displayCurrent,
+                             longest: max(progress.longestStreak, displayCurrent),
+                             tokensRemaining: progress.tokens,
+                             frozeMostRecentDay: progress.lastDayFrozen)
     }
 }
