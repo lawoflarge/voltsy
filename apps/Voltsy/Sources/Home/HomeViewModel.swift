@@ -3,6 +3,7 @@ import Foundation
 import VoltsyCore
 import BatteryEngines
 import BatteryStore
+import WidgetKit
 
 @MainActor
 @Observable
@@ -38,6 +39,8 @@ final class HomeViewModel {
         voltState = VoltStateMapper.map(level: sample.level, state: sample.state,
                                         thermal: sample.thermal, lowPowerMode: sample.lowPowerMode,
                                         minutesAtFull: minutesFull, tint: score.tint)
+        VoltSnapshotStore.write(voltState)              // share with the Home-screen widget
+        WidgetCenter.shared.reloadAllTimelines()
         careScore = score
         // Finalize completed days (strictly before today, with data) into the persisted ledger.
         let cal = Calendar.current
