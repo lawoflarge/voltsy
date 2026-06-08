@@ -13,6 +13,8 @@ final class HomeViewModel {
         VoltState(mood: .content, bellyFill: 0.5, tint: .green)
     private(set) var careScore: CareScore =
         CareScore(value: nil, confidence: .insufficient(accruedCycles: 0, needed: 3), tint: .green)
+    private(set) var streak: StreakState =
+        StreakState(current: 0, longest: 0, tokensRemaining: 1, frozeMostRecentDay: false)
 
     init(store: BatteryStore) {
         self.store = store
@@ -32,5 +34,7 @@ final class HomeViewModel {
                                         thermal: sample.thermal, lowPowerMode: sample.lowPowerMode,
                                         minutesAtFull: minutesFull, tint: score.tint)
         careScore = score
+        let outcomes = StreakAssembler.dayOutcomes(from: recent)
+        streak = StreakEngine.compute(dayOutcomes: outcomes, freezeTokens: 1)
     }
 }

@@ -18,6 +18,8 @@ struct HomeView: View {
 
                 Text(model.voltState.mood.rawValue.capitalized).font(.title2.bold())
 
+                streakRow
+
                 careCard
 
                 Text("On-device estimate from your usage — not Apple's measured cycle count or capacity.")
@@ -50,4 +52,17 @@ struct HomeView: View {
         .background(.quaternary, in: RoundedRectangle(cornerRadius: 16))
     }
 
+    @ViewBuilder private var streakRow: some View {
+        if model.streak.current > 0 {
+            HStack(spacing: 6) {
+                Image(systemName: model.streak.frozeMostRecentDay ? "snowflake" : "flame.fill")
+                    .foregroundStyle(model.streak.frozeMostRecentDay ? Color.cyan : Color.orange)
+                Text("\(model.streak.current)-day care streak")
+                    .font(.subheadline.weight(.semibold))
+            }
+        } else {
+            Label("Keep Volt healthy to start a streak", systemImage: "flame")
+                .font(.subheadline).foregroundStyle(.secondary)
+        }
+    }
 }
