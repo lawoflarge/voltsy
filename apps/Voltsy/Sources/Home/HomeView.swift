@@ -59,7 +59,7 @@ struct HomeView: View {
                     .multilineTextAlignment(.center).padding(.horizontal)
             }
             .padding()
-            .onAppear { model.tick(); consent.startIfNeeded() }
+            .onAppear { model.tick(); if !pro.isPro { consent.startIfNeeded() } }
             .sheet(isPresented: $showingRecap) {
                 WeeklyRecapView(voltState: model.voltState,
                                 weeklyGreenShare: model.weeklyGreenShare,

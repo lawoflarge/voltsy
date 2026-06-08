@@ -39,10 +39,16 @@ public final class ProStore {
         purchaseInFlight = true
         defer { purchaseInFlight = false }
         guard let result = try? await product.purchase() else { return }
-        if case .success(let verification) = result,
-           case .verified(let transaction) = verification {
-            await transaction.finish()
-            await updateEntitlement()
+        if case .success(let verification) = result {
+            // Apple requires finishing every transaction, even unverified ones we don't honor;
+            // an unfinished transaction re-appears in Transaction.updates on every launch.
+            switch verification {
+            case .verified(let transaction):
+                await transaction.finish()
+                await updateEntitlement()
+            case .unverified(let transaction, _):
+                await transaction.finish()
+            }
         }
     }
 
@@ -64,7 +70,10 @@ public final class ProStore {
 
     private func observeTransactionUpdates() -> Task<Void, Never> {
         Task { [weak self] in
-            for await _ in Transaction.updates {
+            for await result in Transaction.updates {
+                if case .unverified(let transaction, _) = result {
+                    await transaction.finish()   // finish but do not grant entitlement
+                }
                 await self?.updateEntitlement()
             }
         }
