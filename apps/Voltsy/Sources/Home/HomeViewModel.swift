@@ -15,6 +15,8 @@ final class HomeViewModel {
         CareScore(value: nil, confidence: .insufficient(accruedCycles: 0, needed: 3), tint: .green)
     private(set) var streak: StreakState =
         StreakState(current: 0, longest: 0, tokensRemaining: 1, frozeMostRecentDay: false)
+    private(set) var greenShareToday: Double = 0
+    private(set) var unlockedAchievements: Set<Achievement> = []
 
     init(store: BatteryStore) {
         self.store = store
@@ -59,5 +61,13 @@ final class HomeViewModel {
                              longest: max(progress.longestStreak, displayCurrent),
                              tokensRemaining: progress.tokens,
                              frozeMostRecentDay: progress.lastDayFrozen)
+
+        // 20–80% challenge ring (today) + badges (from the recent window + persisted streak).
+        greenShareToday = GreenZoneEngine.greenShare(daySamples: byDay[today] ?? [])
+        var badges = Set<Achievement>()
+        for daySamples in byDay.values {
+            badges.formUnion(AchievementsEngine.earned(daySamples: daySamples, streak: displayCurrent))
+        }
+        unlockedAchievements = badges
     }
 }
