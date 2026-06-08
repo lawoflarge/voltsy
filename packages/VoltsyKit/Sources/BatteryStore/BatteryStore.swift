@@ -22,8 +22,13 @@ public final class BatteryStore {
     /// In-memory store so a missing App Group entitlement never crashes launch.
     public static func inMemoryFallback() -> BatteryStore {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try! ModelContainer(for: BatterySampleRecord.self, configurations: config)
-        return BatteryStore(container: container)
+        do {
+            let container = try ModelContainer(for: BatterySampleRecord.self, configurations: config)
+            return BatteryStore(container: container)
+        } catch {
+            // An in-memory container has no store to open; init cannot fail in practice.
+            preconditionFailure("In-memory ModelContainer init failed (SwiftData regression): \(error)")
+        }
     }
 
     public func append(_ sample: BatterySample) throws {
