@@ -5,7 +5,10 @@ import BatteryStore
 @main
 struct VoltsyApp: App {
     @State private var model: HomeViewModel = {
-        let store = (try? BatteryStore.shared()) ?? BatteryStore.inMemoryFallback()
+        // App Group is deferred until the Widget/Live Activity ships. Calling shared()
+        // without the entitlement is a hard SwiftData fatalError (NOT a catchable throw),
+        // so `try?` can't save us — use the on-device store directly for now.
+        let store = (try? BatteryStore.local()) ?? BatteryStore.inMemoryFallback()
         return HomeViewModel(store: store)
     }()
 
