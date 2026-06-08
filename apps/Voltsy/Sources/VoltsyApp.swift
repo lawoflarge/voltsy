@@ -10,6 +10,8 @@ struct VoltsyApp: App {
     }()
 
     var body: some Scene {
-        WindowGroup { HomeView(model: model) }
+        // TEMP (feat/volt-mascot): show the mood gallery to iterate on Volt's look.
+        // Reverts to HomeView once the mascot design is locked.
+        WindowGroup { VoltGalleryView() }
     }
 }
