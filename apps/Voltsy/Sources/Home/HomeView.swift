@@ -10,6 +10,7 @@ struct HomeView: View {
     @State private var showingRecap = false
     @State private var showingPaywall = false
     @Environment(ProStore.self) private var pro
+    @Environment(ConsentManager.self) private var consent
 
     private var tintColor: Color {
         switch model.voltState.tint { case .green: .green; case .amber: .orange; case .red: .red }
@@ -58,7 +59,7 @@ struct HomeView: View {
                     .multilineTextAlignment(.center).padding(.horizontal)
             }
             .padding()
-            .onAppear { model.tick() }
+            .onAppear { model.tick(); consent.startIfNeeded() }
             .sheet(isPresented: $showingRecap) {
                 WeeklyRecapView(voltState: model.voltState,
                                 weeklyGreenShare: model.weeklyGreenShare,
