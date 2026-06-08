@@ -46,6 +46,25 @@ public struct VoltView: View {
     private var fill: CGFloat { max(0.04, min(1.0, CGFloat(state.bellyFill))) }
 
     public var body: some View {
+        figure
+            .phaseAnimator([0.0, 1.0]) { view, phase in
+                let pp = CGFloat(phase)
+                view
+                    .scaleEffect(x: 1 - 0.018 * pp, y: 1 + 0.022 * pp, anchor: .bottom)
+                    .offset(y: -pp * size * 0.012)
+            } animation: { _ in .easeInOut(duration: idleDuration) }
+    }
+
+    /// Idle breathing pace: lively while charging/energetic, faint and slow when critical.
+    private var idleDuration: Double {
+        switch mood {
+        case .energetic, .charging: 0.95
+        case .critical: 2.4
+        default: 1.6
+        }
+    }
+
+    private var figure: some View {
         ZStack {
             Ellipse().fill(Color.black.opacity(0.08))
                 .frame(width: bodyW * 0.92, height: bodyW * 0.16)
