@@ -1,9 +1,8 @@
 // apps/Voltsy/Sources/Ads/AdConfig.swift
-// AdMob configuration. These are Google's public TEST IDs — they serve test ads and never
-// charge. Swap to the real AdMob unit IDs before the App Store release (see
-// marketing/SUBMISSION-CHECKLIST.md). Test ads are valid on TestFlight.
+// AdMob configuration. Real production AdMob IDs (publisher pub-6563643868702361). The app ID
+// is in Info.plist (GADApplicationIdentifier ~4806029723); the banner unit ID is below.
 enum AdConfig {
-    static let bannerUnitID = "ca-app-pub-3940256099942544/2934735716"
+    static let bannerUnitID = "ca-app-pub-6563643868702361/7240621379"
     /// Skip ads for a new user's first sessions so they feel Volt's value first (spec §10).
     static let graceSessions = 3
 }
