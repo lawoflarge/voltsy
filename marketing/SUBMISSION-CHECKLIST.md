@@ -1,6 +1,6 @@
-# Voltsy v1.0 — App Store Submission ✅ RESUBMITTED 2026-06-12 (Build 8)
+# Voltsy v1.0 — ✅ APPROVED + LIVE 2026-06-13 (Build 8)
 
-**Status: Build 7 was REJECTED 2026-06-12 (Guideline 2.1 — ATT prompt not appearing on iPadOS 26.5). Build 8 fixes it and was resubmitted.**
+**Status: v1.0 (Build 8) + Pro IAP APPROVED 2026-06-13 — READY_FOR_DISTRIBUTION, on-sale check passed (`/v1/apps/6778094814/appAvailabilityV2` OK). Build 7 had been REJECTED 2026-06-12 (Guideline 2.1 — ATT prompt not appearing on iPadOS 26.5); build 8 fixed it.**
 
 ## Build 8 — ATT fix (2026-06-12)
 - Root cause: ATT was requested via Home.onAppear → UMP callback during launch (scene not yet foreground-active) and could collide with the notification permission alert fired from `HomeViewModel.init` — iOS silently drops the ATT prompt in both cases (same as RateRadar Guideline 2.1 rejection 50741e54).
