@@ -9,12 +9,11 @@ final class VoltNotifications {
     private let center = UNUserNotificationCenter.current()
     private let streakID = "voltsy.streak.evening"
 
-    func requestPermissionIfNeeded() {
-        Task {
-            let settings = await center.notificationSettings()
-            guard settings.authorizationStatus == .notDetermined else { return }
-            _ = try? await center.requestAuthorization(options: [.alert, .sound, .badge])
-        }
+    /// Suspends until the user responds so the caller can sequence launch prompts.
+    func requestPermissionIfNeeded() async {
+        let settings = await center.notificationSettings()
+        guard settings.authorizationStatus == .notDetermined else { return }
+        _ = try? await center.requestAuthorization(options: [.alert, .sound, .badge])
     }
 
     /// Daily 20:00 nudge to protect an active streak; cancelled when there is no streak.

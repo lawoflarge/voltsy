@@ -1,7 +1,11 @@
 // apps/Voltsy/Sources/Ads/ConsentManager.swift
-// GDPR/UMP consent + ATT pre-prompt + AdMob start, in Google's required order:
-// UMP consent form first, then ATT, then MobileAds.start. `canShowAds` flips true once ads
-// are permitted; a per-launch session counter feeds AdGate's ad-light grace period.
+// ATT pre-prompt + GDPR/UMP consent + AdMob start. The ordering is load-bearing
+// (Guideline 2.1 rejection 528ae9f3, same as RateRadar 50741e54): iOS silently drops
+// the ATT prompt when it is requested before the scene is foreground-active or while
+// another system alert is up, so VoltsyApp sequences the launch prompts at the first
+// scenePhase == .active (+600ms): ATT → notifications → UMP/ads. ATT runs before any
+// ad/consent network call so the prompt precedes data collection. `canShowAds` flips
+// true once ads are permitted; a per-launch session counter feeds AdGate's grace period.
 import SwiftUI
 import AppTrackingTransparency
 @preconcurrency import GoogleMobileAds
@@ -21,31 +25,29 @@ final class ConsentManager {
         sessionCount = n
     }
 
-    /// Run once per launch after the user has seen Volt (called from Home.onAppear).
-    func startIfNeeded() {
+    /// ATT prompt, suspended until the user responds — the caller sequences the
+    /// notifications prompt behind it, because overlapping system permission alerts
+    /// make iOS drop the ATT one. Only asks while undetermined; never blocks the app.
+    func requestATTIfNeeded() async {
+        if ATTrackingManager.trackingAuthorizationStatus == .notDetermined {
+            _ = await ATTrackingManager.requestTrackingAuthorization()
+        }
+    }
+
+    /// One-shot UMP consent (GDPR form where required) + Mobile Ads SDK start.
+    /// Runs LAST in the launch sequence: with no consent message published the UMP
+    /// form call can stall for a long time, so nothing user-facing may wait on it.
+    func startAds() async {
         guard !didStart else { return }
         didStart = true
-        let params = RequestParameters()
-        ConsentInformation.shared.requestConsentInfoUpdate(with: params) { [weak self] _ in
-            Task { @MainActor in self?.presentFormThenATT() }
+        do {
+            try await ConsentInformation.shared.requestConsentInfoUpdate(with: RequestParameters())
+            try await ConsentForm.loadAndPresentIfRequired(from: Self.rootViewController())
+        } catch {
+            // Consent failure must never block the app.
         }
-    }
-
-    private func presentFormThenATT() {
-        ConsentForm.loadAndPresentIfRequired(from: Self.rootViewController()) { [weak self] _ in
-            Task { @MainActor in self?.requestATTThenStart() }
-        }
-    }
-
-    private func requestATTThenStart() {
-        ATTrackingManager.requestTrackingAuthorization { [weak self] _ in
-            Task { @MainActor in self?.startAds() }
-        }
-    }
-
-    private func startAds() {
         guard ConsentInformation.shared.canRequestAds else { return }
-        MobileAds.shared.start { _ in }
+        await MobileAds.shared.start()
         canShowAds = true
     }
 

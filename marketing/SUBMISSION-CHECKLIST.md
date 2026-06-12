@@ -1,6 +1,12 @@
-# Voltsy v1.0 — App Store Submission ✅ SUBMITTED 2026-06-09
+# Voltsy v1.0 — App Store Submission ✅ RESUBMITTED 2026-06-12 (Build 8)
 
-**Status: Version 1.0 (Build 7) + Pro IAP both WAITING_FOR_REVIEW.** Only Apple's review is pending.
+**Status: Build 7 was REJECTED 2026-06-12 (Guideline 2.1 — ATT prompt not appearing on iPadOS 26.5). Build 8 fixes it and was resubmitted.**
+
+## Build 8 — ATT fix (2026-06-12)
+- Root cause: ATT was requested via Home.onAppear → UMP callback during launch (scene not yet foreground-active) and could collide with the notification permission alert fired from `HomeViewModel.init` — iOS silently drops the ATT prompt in both cases (same as RateRadar Guideline 2.1 rejection 50741e54).
+- Fix: launch prompts strictly sequenced from first `scenePhase == .active` +600ms: **ATT (awaited) → notifications (awaited) → UMP consent → MobileAds.start**. UMP runs LAST because `loadAndPresentIfRequired` can stall while no consent message is published for Voltsy (EU sim reproduced the hang).
+- Verified on iPad Air 11-inch simulator (fresh install): ATT prompt appears first, then notifications, app continues normally.
+- Review notes updated + screen recording `Voltsy-ATT-demo-build8.mp4` attached to App Review Information (attachment `00483809`).
 
 ## Done
 - ✅ **Website (monorepo)**: `web/` → **voltsy.vercel.app** (Vercel project `voltsy`, Root Directory `web`, git-connected → push auto-deploys). `/privacy.html`, `/support.html`, `/app-ads.txt` all live & public.
