@@ -29,10 +29,12 @@ final class HomeViewModel {
         self.monitor = BatteryMonitor { [weak self] sample in
             self?.ingest(sample)
         }
-        notifications.requestPermissionIfNeeded()
     }
 
     func tick() { monitor.refresh() }
+
+    /// Called by VoltsyApp after the ATT prompt — launch prompts must never overlap.
+    func requestNotificationPermission() async { await notifications.requestPermissionIfNeeded() }
 
     private func ingest(_ sample: BatterySample) {
         try? store.append(sample)
