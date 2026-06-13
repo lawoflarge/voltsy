@@ -3,6 +3,7 @@
 // The richer state nudges (VoltNotificationEngine) feed the Live Activity / foreground later.
 import Foundation
 import UserNotifications
+import BatteryEngines
 
 @MainActor
 final class VoltNotifications {
@@ -27,6 +28,17 @@ final class VoltNotifications {
         comps.hour = 20
         let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: true)
         let request = UNNotificationRequest(identifier: streakID, content: content, trigger: trigger)
+        Task { try? await center.add(request) }
+    }
+
+    /// Post a one-shot local notification now (best-effort; delivered when iOS lets the app
+    /// run — see the Trust screen's honesty note). De-dup is the caller's job.
+    func fireImmediate(_ message: VoltMessage) {
+        let content = UNMutableNotificationContent()
+        content.body = message.body
+        content.sound = .default
+        let request = UNNotificationRequest(identifier: "voltsy.alert.\(message.kind.rawValue)",
+                                            content: content, trigger: nil)
         Task { try? await center.add(request) }
     }
 }
