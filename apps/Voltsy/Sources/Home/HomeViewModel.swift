@@ -19,6 +19,14 @@ final class HomeViewModel {
     private(set) var greenShareToday: Double = 0
     private(set) var unlockedAchievements: Set<Achievement> = []
     private(set) var weeklyGreenShare: Double = 0
+    private(set) var caption: String = ""
+    private(set) var minutesLeft: Int? = nil          // discharge ETA (F5), nil when ungated
+    private var previousSample: BatterySample? = nil
+    let alertPrefs = AlertPreferences()
+    var isPro: Bool = false                            // set by the view from ProStore
+    private var lastAskedMilestone: Int? =
+        UserDefaults.standard.object(forKey: "voltsy.review.lastMilestone") as? Int
+    private(set) var requestReviewNow: Bool = false    // view observes + calls requestReview
     private let notifications = VoltNotifications()
     #if canImport(ActivityKit)
     private let liveActivity = ChargingActivityController()
@@ -90,5 +98,27 @@ final class HomeViewModel {
         #if canImport(ActivityKit)
         liveActivity.sync(samples: recent, voltState: voltState)
         #endif
+
+        // F4 caption + F5 discharge ETA.
+        caption = VoltCaption.text(for: voltState.mood)
+        minutesLeft = DischargeEstimateEngine.minutesToEmpty(from: recent)
+
+        // F1 one-shot alerts on the transition edge (thresholds per tier, P1).
+        let th = alertPrefs.effective(isPro: isPro)
+        if let alert = ChargeAlertEngine.alert(previous: previousSample, current: sample,
+                                               highThreshold: th.high, lowThreshold: th.low) {
+            notifications.fireImmediate(alert)
+        }
+        previousSample = sample
+
+        // F6 review prompt on a fresh positive streak milestone.
+        if ReviewPromptGate.shouldRequest(streak: displayCurrent, lastAskedMilestone: lastAskedMilestone) {
+            lastAskedMilestone = displayCurrent
+            UserDefaults.standard.set(displayCurrent, forKey: "voltsy.review.lastMilestone")
+            requestReviewNow = true
+        }
     }
+
+    var storeForHistory: BatteryStore { store }
+    func clearReviewRequest() { requestReviewNow = false }
 }
