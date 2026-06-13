@@ -1,0 +1,649 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "~%lld:%02dm left" : {
+      "comment" : "Time-left label; e.g. ~1h 20m left",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "~%1$lldh %2$02dm übrig"
+          }
+        }
+      }
+    },
+    "Alerts" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benachrichtigungen"
+          }
+        }
+      }
+    },
+    "Battery Care" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akku-Pflege"
+          }
+        }
+      }
+    },
+    "Best-effort nudges — iOS can't guarantee a background alarm at an exact level, so think of these as friendly reminders, not a hard stop." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sanfte Erinnerungen nach bestem Bemühen — iOS kann im Hintergrund keinen Alarm bei einem exakten Ladestand garantieren. Sieh sie also als freundliche Hinweise, nicht als harten Stopp."
+          }
+        }
+      }
+    },
+    "Care Tips" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akku-Tipps"
+          }
+        }
+      }
+    },
+    "Charge alerts" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lade-Benachrichtigungen"
+          }
+        }
+      }
+    },
+    "Charge History" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ladeverlauf"
+          }
+        }
+      }
+    },
+    "Charge level (%)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ladestand (%)"
+          }
+        }
+      }
+    },
+    "Comfy right here in the sweet spot." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hier im idealen Bereich fühle ich mich pudelwohl."
+          }
+        }
+      }
+    },
+    "Cool" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cool"
+          }
+        }
+      }
+    },
+    "Customize thresholds with Pro" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schwellenwerte mit Pro anpassen"
+          }
+        }
+      }
+    },
+    "Earn badges by keeping Volt healthy" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verdiene Abzeichen, indem du Volt gesund hältst"
+          }
+        }
+      }
+    },
+    "Fast charging makes heat. When you're not in a hurry, a slower charger is kinder to my battery." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schnelles Laden erzeugt Wärme. Wenn du es nicht eilig hast, ist ein langsameres Ladegerät schonender für meinen Akku."
+          }
+        }
+      }
+    },
+    "Feeling great and full of energy!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mir geht's super und ich bin voller Energie!"
+          }
+        }
+      }
+    },
+    "Fully draining to \"calibrate\" is an old myth from older battery types. I actually prefer partial top-ups — deep drains are harder on me." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Komplett leerzuladen, um zu \"kalibrieren\", ist ein alter Mythos aus Zeiten älterer Akkutypen. Ich mag lieber kleine Zwischenladungen — tiefes Entladen strengt mich an."
+          }
+        }
+      }
+    },
+    "General battery-care habits — not a diagnosis of your specific battery." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allgemeine Gewohnheiten zur Akku-Pflege — keine Diagnose deines konkreten Akkus."
+          }
+        }
+      }
+    },
+    "Getting to know your battery…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich lerne deinen Akku gerade kennen…"
+          }
+        }
+      }
+    },
+    "Getting to know your battery… check back after a little while." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich lerne deinen Akku gerade kennen… schau in einer Weile wieder vorbei."
+          }
+        }
+      }
+    },
+    "Getting a little sleepy… a top-up soon?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich werde langsam müde… bald mal aufladen?"
+          }
+        }
+      }
+    },
+    "Go Pro — remove ads forever" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro holen – Werbung dauerhaft entfernen"
+          }
+        }
+      }
+    },
+    "Goldilocks" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goldlöckchen"
+          }
+        }
+      }
+    },
+    "Heat is the #1 enemy" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hitze ist der größte Feind"
+          }
+        }
+      }
+    },
+    "Honest by design" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ehrlich gemacht"
+          }
+        }
+      }
+    },
+    "I'm running warm — maybe take my case off?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mir wird warm — nimm doch mal meine Hülle ab?"
+          }
+        }
+      }
+    },
+    "I've been full a while — you can unplug me." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich bin schon eine Weile voll — du kannst mich abstecken."
+          }
+        }
+      }
+    },
+    "Keep Volt healthy to start a streak" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halte Volt gesund, um eine Serie zu starten"
+          }
+        }
+      }
+    },
+    "Keeping me roughly between 20% and 80% is gentler than topping up to 100% or running to empty. Optimized Charging (or an 80–90% limit) does this for you." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mich ungefähr zwischen 20 % und 80 % zu halten, ist schonender, als bis 100 % vollzuladen oder ganz leerzufahren. Optimiertes Laden (oder ein 80–90 %-Limit) übernimmt das für dich."
+          }
+        }
+      }
+    },
+    "Last 7 days" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letzte 7 Tage"
+          }
+        }
+      }
+    },
+    "Last 90 days" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letzte 90 Tage"
+          }
+        }
+      }
+    },
+    "Live in the middle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lebe in der Mitte"
+          }
+        }
+      }
+    },
+    "Cold isn't great either" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kälte ist auch nicht ideal"
+          }
+        }
+      }
+    },
+    "No Drama" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein Drama"
+          }
+        }
+      }
+    },
+    "No need to drain to 0%" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein Entladen auf 0 % nötig"
+          }
+        }
+      }
+    },
+    "Night Owl" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nachteule"
+          }
+        }
+      }
+    },
+    "100-day" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "100 Tage"
+          }
+        }
+      }
+    },
+    "On-device estimate from your usage — not Apple's measured cycle count or capacity." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schätzung auf dem Gerät anhand deiner Nutzung — nicht Apples gemessene Ladezyklen oder Kapazität."
+          }
+        }
+      }
+    },
+    "Open Settings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen öffnen"
+          }
+        }
+      }
+    },
+    "Overnight is fine" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über Nacht laden ist okay"
+          }
+        }
+      }
+    },
+    "Charging overnight won't \"overcharge\" me — modern iPhones stop at 100%. It's the heat and sitting at 100% for hours that add up, which Optimized Charging avoids." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über Nacht laden \"überlädt\" mich nicht — moderne iPhones stoppen bei 100 %. Es summieren sich die Wärme und das stundenlange Verweilen bei 100 %, was Optimiertes Laden vermeidet."
+          }
+        }
+      }
+    },
+    "Mmm, soaking up the power." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mmh, ich sauge gerade Energie auf."
+          }
+        }
+      }
+    },
+    "Resting in Low Power Mode to make it last." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich raste im Stromsparmodus, damit es länger reicht."
+          }
+        }
+      }
+    },
+    "Running low — let's find a charger!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich werde knapp — lass uns ein Ladegerät finden!"
+          }
+        }
+      }
+    },
+    "Slow down when you can" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lade langsamer, wenn du kannst"
+          }
+        }
+      }
+    },
+    "Batteries age fastest when hot. Avoid charging under a pillow, in a hot car, or in direct sun — and slip the case off if I'm getting warm." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akkus altern am schnellsten, wenn sie heiß sind. Lade mich nicht unter einem Kissen, im heißen Auto oder in der prallen Sonne — und nimm die Hülle ab, wenn mir warm wird."
+          }
+        }
+      }
+    },
+    "Very cold temperatures temporarily drop my range and, while charging in freezing cold, can cause lasting harm. Room temperature is my happy place." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sehr kalte Temperaturen verkürzen vorübergehend meine Laufzeit und können beim Laden in eisiger Kälte bleibenden Schaden anrichten. Zimmertemperatur ist mein Wohlfühlort."
+          }
+        }
+      }
+    },
+    "This week with Volt" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Woche mit Volt"
+          }
+        }
+      }
+    },
+    "Unlock full history with Pro" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vollständigen Verlauf mit Pro freischalten"
+          }
+        }
+      }
+    },
+    "Voltsy" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voltsy"
+          }
+        }
+      }
+    },
+    "Volt's Care Tips" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volts Akku-Tipps"
+          }
+        }
+      }
+    },
+    "Why Volt never shows a \"battery health %\"" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warum Volt nie eine \"Akkuzustand %\" anzeigt"
+          }
+        }
+      }
+    },
+    "Apple keeps it private" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple hält es privat"
+          }
+        }
+      }
+    },
+    "iOS doesn't let any third-party app read your real battery health, cycle count, or capacity. Apps that show those numbers are guessing — and the guesses are often wrong." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS erlaubt keiner Drittanbieter-App, deinen echten Akkuzustand, die Ladezyklen oder die Kapazität auszulesen. Apps, die solche Zahlen anzeigen, raten nur — und liegen oft daneben."
+          }
+        }
+      }
+    },
+    "Where the real number lives" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wo die echte Zahl steht"
+          }
+        }
+      }
+    },
+    "Your true Battery Health is in Settings → Battery → Battery Health & Charging. That's the one to trust." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deinen echten Akkuzustand findest du unter Einstellungen → Batterie → Batteriezustand & Laden. Dieser Zahl kannst du vertrauen."
+          }
+        }
+      }
+    },
+    "Why my % can differ by a few points" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warum mein % um ein paar Punkte abweichen kann"
+          }
+        }
+      }
+    },
+    "Since iOS 17, apps only read the level in ~5% steps, so I may show 80% while the status bar shows 78%. That's the OS rounding, not a bug." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seit iOS 17 lesen Apps den Ladestand nur in ~5 %-Schritten, daher zeige ich vielleicht 80 %, während die Statusleiste 78 % anzeigt. Das ist die Rundung des Systems, kein Fehler."
+          }
+        }
+      }
+    },
+    "What I do instead" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was ich stattdessen tue"
+          }
+        }
+      }
+    },
+    "I give honest, on-device estimates and gentle care habits — and I tell you when I'm unsure rather than inventing a number." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich gebe ehrliche Schätzungen direkt auf dem Gerät und sanfte Pflege-Tipps — und sage dir, wenn ich unsicher bin, statt eine Zahl zu erfinden."
+          }
+        }
+      }
+    },
+    "Your charge level over time — not battery capacity or health." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Ladestand im Zeitverlauf — nicht Akkukapazität oder -zustand."
+          }
+        }
+      }
+    },
+    "You kept me healthy %lld%% of the week!" : {
+      "comment" : "Weekly recap headline; %lld is a percentage",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du hast mich %lld %% der Woche gesund gehalten!"
+          }
+        }
+      }
+    },
+    "day streak" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tage-Serie"
+          }
+        }
+      }
+    },
+    "badge" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abzeichen"
+          }
+        }
+      }
+    },
+    "badges" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abzeichen"
+          }
+        }
+      }
+    },
+    "%lld-day care streak" : {
+      "comment" : "Streak row; %lld is number of days",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld-Tage-Pflegeserie"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
