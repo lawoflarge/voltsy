@@ -1,5 +1,6 @@
 // apps/Voltsy/Sources/Home/HomeView.swift
 import SwiftUI
+import StoreKit
 import VoltsyCore
 import VoltMascot
 import BatteryEngines
@@ -10,12 +11,14 @@ struct HomeView: View {
     @State private var showingRecap = false
     @State private var showingPaywall = false
     @Environment(ProStore.self) private var pro
+    @Environment(\.requestReview) private var requestReview
 
     private var tintColor: Color {
         switch model.voltState.tint { case .green: .green; case .amber: .orange; case .red: .red }
     }
 
     var body: some View {
+        NavigationStack {
         TimelineView(.periodic(from: .now, by: 5)) { _ in
             VStack(spacing: 24) {
                 ZStack {
@@ -32,6 +35,15 @@ struct HomeView: View {
                 .frame(height: 240)
 
                 Text(model.voltState.mood.rawValue.capitalized).font(.title2.bold())
+
+                Text(model.caption)
+                    .font(.subheadline).foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center).padding(.horizontal)
+
+                if let mins = model.minutesLeft {
+                    Label("~\(mins / 60)h \(mins % 60)m left", systemImage: "hourglass")
+                        .font(.caption).foregroundStyle(.secondary)
+                }
 
                 streakRow
 
@@ -58,7 +70,23 @@ struct HomeView: View {
                     .multilineTextAlignment(.center).padding(.horizontal)
             }
             .padding()
-            .onAppear { model.tick() }
+            .navigationTitle("Voltsy")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu {
+                        NavigationLink { CareTipsView() } label: { Label("Care Tips", systemImage: "lightbulb") }
+                        NavigationLink { ChargeHistoryView(store: model.storeForHistory) } label: { Label("Charge History", systemImage: "chart.xyaxis.line") }
+                        NavigationLink { AlertSettingsView(prefs: model.alertPrefs) { showingPaywall = true } } label: { Label("Alerts", systemImage: "bell.badge") }
+                        NavigationLink { TrustView() } label: { Label("Honest by design", systemImage: "checkmark.shield") }
+                    } label: { Image(systemName: "ellipsis.circle") }
+                }
+            }
+            .onAppear { model.tick(); model.isPro = pro.isPro }
+            .onChange(of: pro.isPro) { _, newValue in model.isPro = newValue }
+            .onChange(of: model.requestReviewNow) { _, fire in
+                if fire { requestReview(); model.clearReviewRequest() }
+            }
             .sheet(isPresented: $showingRecap) {
                 WeeklyRecapView(voltState: model.voltState,
                                 weeklyGreenShare: model.weeklyGreenShare,
@@ -66,6 +94,7 @@ struct HomeView: View {
                                 badges: model.unlockedAchievements.count)
             }
             .sheet(isPresented: $showingPaywall) { PaywallView(store: pro) }
+        }
         }
     }
 
