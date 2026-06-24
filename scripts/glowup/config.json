@@ -1,0 +1,140 @@
+{
+  "voltsy": {
+    "name": "Voltsy",
+    "wordmark": "Voltsy",
+    "appId": "6778094814",
+    "size": {
+      "w": 1290,
+      "h": 2796
+    },
+    "palette": {
+      "canvasTop": "#ECFCF1",
+      "canvasMid": "#D6F5E2",
+      "canvasBottom": "#B7ECC9",
+      "stageTop": "#FFFFFF",
+      "stageBottom": "#EAFBF0",
+      "stageBorder": "rgba(22,163,74,0.14)",
+      "ink": "#0F2E1E",
+      "slate": "#3D6552",
+      "accent": "#16A34A",
+      "accentTint": "#D6F5E2",
+      "green": "#22C55E",
+      "success": "#16A34A",
+      "danger": "#EF4444",
+      "warning": "#F59E0B"
+    },
+    "frames": [
+      {
+        "id": "01-hero",
+        "layout": "hero",
+        "screen": "01-hero.png"
+      },
+      {
+        "id": "02-moods",
+        "layout": "hero",
+        "screen": "02-moods.png"
+      },
+      {
+        "id": "03-alert",
+        "layout": "hero",
+        "screen": "03-alert.png"
+      },
+      {
+        "id": "04-care",
+        "layout": "hero",
+        "screen": "04-care.png"
+      },
+      {
+        "id": "05-widget",
+        "layout": "hero",
+        "screen": "05-widget.png"
+      },
+      {
+        "id": "06-pro",
+        "layout": "cta",
+        "screen": "06-pro.png",
+        "cta": "Download Voltsy"
+      }
+    ],
+    "locales": {
+      "en-US": {
+        "01-hero": {
+          "eyebrow": "MEET VOLT",
+          "headline": "Your battery's new best friend",
+          "accent": "best friend",
+          "subline": "A cute buddy who reacts to your real battery — and helps it last longer."
+        },
+        "02-moods": {
+          "eyebrow": "LIVE REACTIONS",
+          "headline": "Volt mirrors your battery's mood",
+          "accent": "your battery's mood",
+          "subline": "Happy when healthy, sleepy when low, sweaty when hot. One glance and you just know."
+        },
+        "03-alert": {
+          "eyebrow": "CHARGE SMART",
+          "headline": "Know exactly when to unplug",
+          "accent": "when to unplug",
+          "subline": "Gentle alerts at 80% and on low battery keep Volt — and your battery — in the healthy zone."
+        },
+        "04-care": {
+          "eyebrow": "DAILY CARE",
+          "headline": "Turn battery care into a streak",
+          "accent": "a streak",
+          "subline": "Stay in the 20-80% green zone, grow your streak and earn badges. Your Battery Care score out of 100."
+        },
+        "05-widget": {
+          "eyebrow": "ALWAYS WITH YOU",
+          "headline": "Volt lives on your Home Screen",
+          "accent": "Home Screen",
+          "subline": "A widget and Live Activity show Volt's mood and charge at a glance — no need to open the app."
+        },
+        "06-pro": {
+          "eyebrow": "VOLTSY PRO",
+          "headline": "One tap. No ads. Forever.",
+          "accent": "No ads.",
+          "subline": "Unlock full history, premium cosmetics and deluxe widgets with a one-time purchase. No subscription.",
+          "cta": "Download Voltsy"
+        }
+      },
+      "de-DE": {
+        "01-hero": {
+          "eyebrow": "DARF ICH VORSTELLEN: VOLT",
+          "headline": "Der beste Freund deines Akkus",
+          "accent": "beste Freund",
+          "subline": "Ein süßer Begleiter, der auf deinen echten Akku reagiert — und ihm hilft, länger zu halten."
+        },
+        "02-moods": {
+          "eyebrow": "LIVE-REAKTIONEN",
+          "headline": "Volt fühlt, was dein Akku fühlt",
+          "accent": "was dein Akku fühlt",
+          "subline": "Glücklich bei gesundem Stand, müde bei wenig, verschwitzt bei Hitze. Ein Blick genügt."
+        },
+        "03-alert": {
+          "eyebrow": "SCHLAU LADEN",
+          "headline": "Wisse genau, wann ausstecken",
+          "accent": "wann ausstecken",
+          "subline": "Sanfte Hinweise bei 80% und bei niedrigem Stand halten Volt — und deinen Akku — gesund."
+        },
+        "04-care": {
+          "eyebrow": "TÄGLICHE PFLEGE",
+          "headline": "Mach Akkupflege zur Serie",
+          "accent": "zur Serie",
+          "subline": "Bleib in der 20–80%-Zone, lass deine Serie wachsen und sammle Abzeichen. Gute Gewohnheiten, süß gemacht."
+        },
+        "05-widget": {
+          "eyebrow": "IMMER DABEI",
+          "headline": "Volt lebt auf deinem Home-Bildschirm",
+          "accent": "Home-Bildschirm",
+          "subline": "Widget und Live-Aktivität zeigen Volts Stimmung und Ladestand auf einen Blick — ohne die App zu öffnen."
+        },
+        "06-pro": {
+          "eyebrow": "VOLTSY PRO",
+          "headline": "Ein Tipp. Keine Werbung. Für immer.",
+          "accent": "Keine Werbung.",
+          "subline": "Volle Historie, Premium-Kosmetik und Deluxe-Widgets per Einmalkauf. Kein Abo.",
+          "cta": "Voltsy laden"
+        }
+      }
+    }
+  }
+}
