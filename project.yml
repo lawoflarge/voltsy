@@ -8,8 +8,8 @@ settings:
   base:
     DEVELOPMENT_TEAM: R95M36AU2X
     SWIFT_VERSION: "6.0"
-    MARKETING_VERSION: "1.2.0"
-    CURRENT_PROJECT_VERSION: "9"
+    MARKETING_VERSION: "1.2.1"
+    CURRENT_PROJECT_VERSION: "10"
 packages:
   VoltsyKit:
     path: packages/VoltsyKit
