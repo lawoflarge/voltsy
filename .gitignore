@@ -9,3 +9,4 @@ build/
 *.ipa
 *.dSYM.zip
 .secrets/
+*.p8

@@ -28,4 +28,4 @@
 - App: "Voltsy: Battery Life Buddy", App Store ID **6778094814**, bundle `com.lawoflarge.voltsy`, team R95M36AU2X.
 - IAP: `com.lawoflarge.voltsy.pro` (iapId 6778176009).
 - AdMob console app id 4806029723; publisher pub-6563643868702361.
-- Build pipeline: `xcodegen generate` → archive Release (manual, both targets) → export `build/ExportOptions.plist` → `altool --apiKey REDACTED_ASC_KEY_ID --apiIssuer 538cb0d4-…`. Bump `CURRENT_PROJECT_VERSION` per build.
+- Build pipeline: `xcodegen generate` → archive Release (manual, both targets) → export `build/ExportOptions.plist` → `altool --apiKey $ASC_KEY_ID --apiIssuer $ASC_ISSUER_ID Bump `CURRENT_PROJECT_VERSION` per build.
