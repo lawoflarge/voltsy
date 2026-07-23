@@ -8,6 +8,32 @@
 <meta property="og:image" content="/og-image.png">
 <title>Voltsy — Battery Life Buddy</title>
 <meta name="description" content="Meet Volt, the cute battery companion that reacts live to your iPhone's charge and helps you build healthy charging habits.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Voltsy: Battery Care Buddy",
+  "operatingSystem": "iOS",
+  "applicationCategory": "UtilitiesApplication",
+  "url": "https://apps.apple.com/us/app/voltsy-battery-care-buddy/id6778094814",
+  "description": "Voltsy is a free iOS app that makes iPhone battery care fun with Volt, a cute battery mascot that reacts live to your charge level. It sends charge alerts to unplug around 80%, tracks a daily care streak, shows charge history, and adds a Home Screen widget plus a Lock Screen Live Activity. Every battery figure is a clearly-labeled on-device estimate, and Voltsy never claims to read Apple's official battery health or cycle count.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is Voltsy free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Voltsy is free to download and includes Volt the battery mascot, charge alerts, the daily care streak, and battery care tips. Voltsy Pro is an optional one-time €4.99 purchase that removes ads, unlocks full charge history, adds custom alert thresholds, and gives unlimited streak freezes. There is no subscription." } },
+    { "@type": "Question", "name": "Can Voltsy show my iPhone's real battery health?", "acceptedAnswer": { "@type": "Answer", "text": "No. iOS does not let any third-party app read Apple's official battery health percentage or cycle count, and Voltsy never pretends to. Every figure Voltsy shows is a clearly-labeled on-device estimate from your own usage, and the app points you to Settings, where Apple lists the real numbers." } },
+    { "@type": "Question", "name": "What does Voltsy do?", "acceptedAnswer": { "@type": "Answer", "text": "Voltsy makes battery care fun with Volt, a battery mascot that looks happy in the healthy zone, sleepy when low, and dramatic at 1%. It sends charge alerts to unplug near 80%, tracks a daily care streak, shows charge history, and offers science-based care tips to extend your battery's life." } },
+    { "@type": "Question", "name": "Does Voltsy collect my data?", "acceptedAnswer": { "@type": "Answer", "text": "No. Voltsy has no account and no backend server, so your charge history, streak, and battery estimates are stored and processed entirely on your iPhone. Voltsy uses only Apple's public battery APIs. The free version shows ads, and Voltsy Pro removes them with a one-time purchase." } },
+    { "@type": "Question", "name": "What is the healthy 20–80% battery zone?", "acceptedAnswer": { "@type": "Answer", "text": "Keeping a lithium-ion battery between roughly 20% and 80% reduces the stress that full charges and deep drains put on it over time. Voltsy shows a friendly ring for this green zone, sends a nudge to unplug around 80%, and warns you when you are running low." } },
+    { "@type": "Question", "name": "What does Voltsy Pro include?", "acceptedAnswer": { "@type": "Answer", "text": "Voltsy Pro is a one-time €4.99 purchase with no subscription. It removes all ads, unlocks your full charge history, lets you set custom alert thresholds for charging and low battery, and gives unlimited Power Nap freezes so a missed day never breaks your care streak. You buy it once and keep it forever." } }
+  ]
+}
+</script>
 <style>
   :root { --green:#33CC66; --ink:#0e1a13; --muted:#5b6b61; --bg:#f6fbf7; --card:#ffffff; }
   * { box-sizing:border-box; }
@@ -26,6 +52,13 @@
   .links a { color:var(--green); text-decoration:none; font-weight:600; }
   footer { color:var(--muted); font-size:14px; margin-top:40px; border-top:1px solid #e6efe9; padding-top:18px; }
   footer a { color:var(--muted); }
+  .geo-def { font-size:15px; color:var(--muted); margin:0 0 28px; }
+  .faq { margin-top:32px; }
+  .faq h2 { font-size:24px; margin:0 0 16px; }
+  .faq-item { background:var(--card); border:1px solid #e6efe9; border-radius:18px; padding:20px 24px; margin:12px 0; }
+  .faq-item h3 { margin:0 0 8px; font-size:16px; }
+  .faq-item p { margin:0; color:var(--muted); }
+  .updated { margin-top:12px; font-size:13px; color:var(--muted); }
 </style>
 </head>
 <body>
@@ -33,6 +66,8 @@
     <div class="badge">⚡️</div>
     <h1>Voltsy</h1>
     <p class="tag">Meet Volt — your battery's new best friend.</p>
+
+    <p class="geo-def" data-geo-definition>Voltsy is a free iPhone app built around Volt, a cute battery mascot that reacts live to your charge level. It nudges you to keep a healthy 20–80% range, turns good charging habits into a daily streak, and shows only clearly-labeled on-device estimates — never fake battery-health numbers.</p>
 
     <div class="card">
       <h2>What is Voltsy?</h2>
@@ -47,7 +82,35 @@
       percentage or cycle count — every care figure is a clearly-labelled on-device estimate.</p>
     </div>
 
-    <a class="btn" href="https://apps.apple.com/app/id6778094814">Download on the App Store</a>
+    <a class="btn" href="https://apps.apple.com/us/app/voltsy-battery-care-buddy/id6778094814">Download on the App Store</a>
+
+    <section class="faq" id="faq">
+      <h2>Frequently asked questions</h2>
+      <div class="faq-item">
+        <h3>Is Voltsy free?</h3>
+        <p>Yes. Voltsy is free to download and includes Volt the battery mascot, charge alerts, the daily care streak, and battery care tips. Voltsy Pro is an optional one-time €4.99 purchase that removes ads, unlocks full charge history, adds custom alert thresholds, and gives unlimited streak freezes. There is no subscription.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can Voltsy show my iPhone's real battery health?</h3>
+        <p>No. iOS does not let any third-party app read Apple's official battery health percentage or cycle count, and Voltsy never pretends to. Every figure Voltsy shows is a clearly-labeled on-device estimate from your own usage, and the app points you to Settings, where Apple lists the real numbers.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What does Voltsy do?</h3>
+        <p>Voltsy makes battery care fun with Volt, a battery mascot that looks happy in the healthy zone, sleepy when low, and dramatic at 1%. It sends charge alerts to unplug near 80%, tracks a daily care streak, shows charge history, and offers science-based care tips to extend your battery's life.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does Voltsy collect my data?</h3>
+        <p>No. Voltsy has no account and no backend server, so your charge history, streak, and battery estimates are stored and processed entirely on your iPhone. Voltsy uses only Apple's public battery APIs. The free version shows ads, and Voltsy Pro removes them with a one-time purchase.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is the healthy 20–80% battery zone?</h3>
+        <p>Keeping a lithium-ion battery between roughly 20% and 80% reduces the stress that full charges and deep drains put on it over time. Voltsy shows a friendly ring for this green zone, sends a nudge to unplug around 80%, and warns you when you are running low.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What does Voltsy Pro include?</h3>
+        <p>Voltsy Pro is a one-time €4.99 purchase with no subscription. It removes all ads, unlocks your full charge history, lets you set custom alert thresholds for charging and low battery, and gives unlimited Power Nap freezes so a missed day never breaks your care streak. You buy it once and keep it forever.</p>
+      </div>
+    </section>
 
     <footer>
       <div class="links">
@@ -55,6 +118,7 @@
         <a href="/support.html">Support</a>
       </div>
       <p style="margin-top:12px;">© 2026 Levin Schwab · <a href="mailto:levin.schwab@gmx.de">levin.schwab@gmx.de</a></p>
+      <p class="updated">Last updated: 2026-07-23</p>
     </footer>
   </div>
 </body>
