@@ -16,7 +16,7 @@ packages:
   GoogleMobileAds:
     url: https://github.com/googleads/swift-package-manager-google-mobile-ads
     from: "13.0.0"
-  UserMessagingPlatform:
+  GoogleUserMessagingPlatform:
     url: https://github.com/googleads/swift-package-manager-google-user-messaging-platform
     from: "3.0.0"
 targets:
@@ -53,7 +53,7 @@ targets:
         product: Monetization
       - package: GoogleMobileAds
         product: GoogleMobileAds
-      - package: UserMessagingPlatform
+      - package: GoogleUserMessagingPlatform
         product: GoogleUserMessagingPlatform
       - target: VoltsyWidget
         embed: true

@@ -46,7 +46,7 @@ struct ChargeHistoryView: View {
                 }
             }
 
-            if AdGate.shouldShowAds(isPro: pro.isPro, hasConsent: consent.canShowAds,
+            if Monetization.AdGate.shouldShowAds(isPro: pro.isPro, hasConsent: consent.canShowAds,
                                     completedSessions: consent.sessionCount,
                                     graceSessions: AdConfig.graceSessions) {
                 Section { AdBanner(adUnitID: AdConfig.bannerUnitID).frame(height: 60) }

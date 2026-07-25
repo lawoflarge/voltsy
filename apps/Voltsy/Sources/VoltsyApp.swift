@@ -16,6 +16,8 @@ struct VoltsyApp: App {
     }()
     @State private var proStore = ProStore()
     @State private var consent = ConsentManager()
+    @State private var gate = AdGate()
+    @State private var interstitial = InterstitialAdManager()
 
     var body: some Scene {
         WindowGroup {
@@ -27,6 +29,8 @@ struct VoltsyApp: App {
                 HomeView(model: model)
                     .environment(proStore)
                     .environment(consent)
+                    .environment(gate)
+                    .environment(interstitial)
             }
         }
         .onChange(of: scenePhase) { _, newPhase in
@@ -36,11 +40,17 @@ struct VoltsyApp: App {
             // iOS drop the prompt silently (Guideline 2.1 rejection 528ae9f3).
             guard ScreenshotMode.requested == nil, newPhase == .active, !consentScheduled else { return }
             consentScheduled = true
+            // Interstitial session counter (canonical AdGate cap): bump once per launch so
+            // canShowInterstitial only unlocks from the 2nd session onward.
+            AdGate.bumpSession()
             Task {
                 try? await Task.sleep(for: .milliseconds(600))
                 if !proStore.isPro { await consent.requestATTIfNeeded() }
                 await model.requestNotificationPermission()
-                if !proStore.isPro { await consent.startAds() }
+                if !proStore.isPro {
+                    await consent.startAds()
+                    interstitial.preload()
+                }
             }
         }
     }

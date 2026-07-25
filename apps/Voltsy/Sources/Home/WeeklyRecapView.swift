@@ -19,7 +19,7 @@ struct WeeklyRecapView: View {
     var body: some View {
         VStack(spacing: 0) {
             recapCard
-            if AdGate.shouldShowAds(isPro: pro.isPro, hasConsent: consent.canShowAds,
+            if Monetization.AdGate.shouldShowAds(isPro: pro.isPro, hasConsent: consent.canShowAds,
                                     completedSessions: consent.sessionCount,
                                     graceSessions: AdConfig.graceSessions) {
                 AdBanner(adUnitID: AdConfig.bannerUnitID).frame(height: 60)

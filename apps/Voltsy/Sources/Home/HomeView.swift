@@ -11,6 +11,9 @@ struct HomeView: View {
     @State private var showingRecap = false
     @State private var showingPaywall = false
     @Environment(ProStore.self) private var pro
+    @Environment(ConsentManager.self) private var consent
+    @Environment(AdGate.self) private var gate
+    @Environment(InterstitialAdManager.self) private var interstitial
     @Environment(\.requestReview) private var requestReview
 
     private var tintColor: Color {
@@ -51,7 +54,17 @@ struct HomeView: View {
 
                 achievementsRow
 
-                Button { showingRecap = true } label: {
+                Button {
+                    // Present ONE capped interstitial at this natural navigational break,
+                    // then open the recap. Gated on !isPro + consent + the AdGate cap;
+                    // silent-degrades to opening the recap directly when no ad is due/ready.
+                    if !pro.isPro && consent.canShowAds && gate.canShowInterstitial {
+                        gate.recordInterstitial()
+                        interstitial.present { showingRecap = true }
+                    } else {
+                        showingRecap = true
+                    }
+                } label: {
                     Label("This week with Volt", systemImage: "square.and.arrow.up")
                         .font(.subheadline.weight(.semibold))
                 }
