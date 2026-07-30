@@ -10,3 +10,4 @@ build/
 *.dSYM.zip
 .secrets/
 *.p8
+.vercel
