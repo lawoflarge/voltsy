@@ -12,6 +12,17 @@
         }
       }
     },
+    "Ad privacy options" : {
+      "comment" : "Settings menu entry that reopens the UMP consent form (GDPR withdrawal).",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Werbe-Einwilligung ändern"
+          }
+        }
+      }
+    },
     "Alerts" : {
       "localizations" : {
         "de" : {

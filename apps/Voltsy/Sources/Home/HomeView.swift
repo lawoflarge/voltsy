@@ -92,6 +92,11 @@ struct HomeView: View {
                         NavigationLink { ChargeHistoryView(store: model.storeForHistory) } label: { Label("Charge History", systemImage: "chart.xyaxis.line") }
                         NavigationLink { AlertSettingsView(prefs: model.alertPrefs) { showingPaywall = true } } label: { Label("Alerts", systemImage: "bell.badge") }
                         NavigationLink { TrustView() } label: { Label("Honest by design", systemImage: "checkmark.shield") }
+                        if consent.privacyOptionsRequired {
+                            Button { Task { await consent.presentPrivacyOptions() } } label: {
+                                Label("Ad privacy options", systemImage: "hand.raised")
+                            }
+                        }
                     } label: { Image(systemName: "ellipsis.circle") }
                 }
             }

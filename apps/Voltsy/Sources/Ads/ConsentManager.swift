@@ -51,6 +51,19 @@ final class ConsentManager {
         canShowAds = true
     }
 
+    /// True inside the EEA/UK, where the UMP privacy options form exists. Gates the
+    /// settings entry so users elsewhere never see a button that does nothing.
+    var privacyOptionsRequired: Bool {
+        ConsentInformation.shared.privacyOptionsRequirementStatus == .required
+    }
+
+    /// Re-opens the UMP privacy options form so a granted consent can be withdrawn
+    /// as easily as it was given (GDPR Art. 7(3)).
+    func presentPrivacyOptions() async {
+        guard let root = Self.rootViewController() else { return }
+        try? await ConsentForm.presentPrivacyOptionsForm(from: root)
+    }
+
     @MainActor
     private static func rootViewController() -> UIViewController? {
         UIApplication.shared.connectedScenes
