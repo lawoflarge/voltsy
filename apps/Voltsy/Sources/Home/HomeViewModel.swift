@@ -67,8 +67,11 @@ final class HomeViewModel {
             .filter { $0 < today && (lastFinal == nil || $0 > lastFinal!) }
             .sorted()
             .map { (day: $0, healthy: DayHealthEvaluator.evaluate(daySamples: byDay[$0]!).isHealthy) }
+        // Pro buys "unlimited Power Nap streak freezes": at most one token can be spent
+        // per day and the ledger refills every ISO week, so a weekly capacity of 7 is
+        // unlimited in practice. Free stays at the single advertised freeze.
         progress = StreakLedgerEngine.advance(progress, completedDays: completed,
-                                              capacity: 1, calendar: cal)
+                                              capacity: isPro ? 7 : 1, calendar: cal)
         try? store.saveStreakProgress(progress)
 
         // Display: finalized streak + provisional +1 if today is already healthy.

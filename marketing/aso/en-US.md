@@ -37,8 +37,7 @@ VOLTSY PRO — pay once, keep Volt happy forever
 • Zero ads, forever
 • Full battery history & insights
 • Unlimited Power Nap streak freezes
-• Premium Volt cosmetics & skins
-• Deluxe widgets & Live Activity flourishes
+• Custom charge alert thresholds
 One-time purchase. No subscription, ever.
 
 Battery care, with a buddy. Keep Volt in the green.

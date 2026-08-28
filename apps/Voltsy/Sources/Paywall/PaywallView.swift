@@ -10,12 +10,14 @@ struct PaywallView: View {
     let store: ProStore
     @Environment(\.dismiss) private var dismiss
 
+    // Every line here must map to code that actually gates on `isPro`. Cosmetics/skins and
+    // "deluxe widgets" were advertised without any implementation behind them and are gone;
+    // the custom alert thresholds are a real Pro gate that was never named.
     private let perks: [(String, String)] = [
         ("bolt.slash.fill", "Zero ads, forever"),
         ("clock.arrow.circlepath", "Full battery history & insights"),
         ("snowflake", "Unlimited Power Nap streak freezes"),
-        ("paintpalette.fill", "Premium Volt cosmetics & skins"),
-        ("rectangle.3.group.fill", "Deluxe widgets & Live Activity flourishes"),
+        ("bell.badge", "Custom charge alert thresholds"),
     ]
 
     var body: some View {

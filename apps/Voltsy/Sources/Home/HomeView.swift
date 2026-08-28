@@ -23,6 +23,9 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
         TimelineView(.periodic(from: .now, by: 5)) { _ in
+            // Scrolls so the whole column stays reachable at the largest text sizes.
+            // Without it the two buttons below the fold fall off an iPhone SE at AX5.
+            ScrollView {
             VStack(spacing: 24) {
                 ZStack {
                     // "Keep it 20–80%" challenge ring — fills with today's green-zone share.
@@ -83,6 +86,7 @@ struct HomeView: View {
                     .multilineTextAlignment(.center).padding(.horizontal)
             }
             .padding()
+            }
             .navigationTitle("Voltsy")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
