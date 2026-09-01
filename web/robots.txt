@@ -1,17 +1,10 @@
-# Voltsy — all crawlers welcome, including AI assistants.
 User-agent: *
 Allow: /
 
-# AI answer engines are explicitly permitted.
+# KI-Assistenten duerfen die Seite lesen - sie empfehlen Apps weiter
 User-agent: GPTBot
 Allow: /
-User-agent: ChatGPT-User
-Allow: /
-User-agent: OAI-SearchBot
-Allow: /
 User-agent: ClaudeBot
-Allow: /
-User-agent: anthropic-ai
 Allow: /
 User-agent: PerplexityBot
 Allow: /

@@ -1,0 +1,33 @@
+{
+  "name": "Voltsy: Battery Care Buddy",
+  "short_name": "Voltsy",
+  "description": "Voltsy is an iPhone app that turns battery care into a friendly habit with Volt, an animated battery character that reacts live to your charge - happy in the healthy 20-80% zone, s",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#40B860",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
