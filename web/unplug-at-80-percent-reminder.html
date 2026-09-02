@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Reminder to Unplug Your iPhone at 80%</title>
+<meta name="description" content="Why 80% matters, how the built in Charge Limit and Optimized Battery Charging compare with a reminder, and how Voltsy's unplug alert fires once instead of nagging.">
+<link rel="stylesheet" href="/aso-tokens.css">
+<link rel="stylesheet" href="/style.css">
+<!-- aso:head:start -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#40B860">
+<meta name="apple-itunes-app" content="app-id=6778094814, app-argument=https://voltsy.vercel.app/support.html">
+<link rel="canonical" href="https://voltsy.vercel.app/support.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Voltsy">
+<meta property="og:url" content="https://voltsy.vercel.app/support.html">
+<meta property="og:image" content="https://voltsy.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Voltsy: Battery Care Buddy on the App Store">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://voltsy.vercel.app/og-image.png">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<!-- aso:head:end -->
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brandmark" href="/"><img src="/icon-192.png" width="30" height="30" alt=""> Voltsy</a>
+      <nav>
+        <a href="/iphone-battery-health.html">Battery health</a>
+        <a href="/extend-iphone-battery-life.html">Charging guide</a>
+        <a href="/battery-pet-app.html">Meet Volt</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="wrap hero">
+      <span class="eyebrow">Guide</span>
+      <h1>A Reminder to Unplug Your iPhone at 80%</h1>
+      <p class="lede">Before you install anything, check whether your iPhone can simply stop at 80% on
+      its own. If it can, that beats every reminder. If it cannot, here is what a nudge is worth.</p>
+
+      <div class="rule" aria-hidden="true"></div>
+      <h2>Why 80% is the number people pick</h2>
+      <p>The last stretch of a charge holds a lithium ion cell at its highest voltage, and the longer it
+      sits there the faster it ages. Stopping around 80% skips that part. The same logic applies at the
+      bottom: a discharge that ends near empty is hard on the cell, which is where the matching 20% floor
+      comes from.</p>
+    <div class="zone" role="img" aria-label="A charge level bar. Below 20 percent and above 80 percent are the stressful ends. The band from 20 to 80 percent is the easy zone.">
+      <div class="seg low"><b>0 to 20%</b><span>Deep drains wear the cell</span></div>
+      <div class="seg ok"><b>20 to 80%</b><span>The easy zone. Volt stays green here</span></div>
+      <div class="seg high"><b>80 to 100%</b><span>High voltage, more strain when held</span></div>
+    </div>
+
+      <div class="rule" aria-hidden="true"></div>
+      <h2>First: does your iPhone already do this?</h2>
+      <div class="grid two">
+        <div class="panel">
+          <h3>iPhone 15 and later</h3>
+          <p>Settings, then Battery, then Charging. Choose a ceiling. In iOS 18 you can pick 80, 85, 90,
+          95 or 100 percent, and the phone stops there without asking you anything. It resumes if the
+          level drops to about 75% and occasionally runs to full to keep its own estimate accurate.</p>
+        </div>
+        <div class="panel">
+          <h3>iPhone 14 and earlier</h3>
+          <p>Settings, then Battery, then Battery Health and Charging, then Optimized Battery Charging.
+          The phone learns your routine, holds near 80% overnight and completes the charge before you
+          usually get up.</p>
+        </div>
+      </div>
+      <p class="note"><b>Be honest with yourself here.</b> If Charge Limit is available on your iPhone,
+      it is strictly better than a notification: it acts while you sleep, it needs no attention, and it
+      cannot be ignored. A reminder app is the second best option, not the first.</p>
+
+      <div class="rule" aria-hidden="true"></div>
+      <h2>Where a reminder still earns its place</h2>
+      <ul>
+        <li><b>An iPhone without Charge Limit.</b> The ceiling setting arrived with iPhone 15. Everything
+        older has Optimized Battery Charging, which only helps for long, predictable overnight charges.</li>
+        <li><b>Daytime top ups.</b> Optimized Battery Charging does nothing for the half hour you plug in
+        at your desk. That is exactly when a nudge lands.</li>
+        <li><b>Days you want the full charge.</b> A hard limit means planning ahead before a long trip. A
+        reminder lets you decide in the moment.</li>
+        <li><b>The other end.</b> Neither iOS setting warns you on the way down. A low alert does.</li>
+      </ul>
+
+      <div class="rule" aria-hidden="true"></div>
+      <h2>How Voltsy's alert behaves</h2>
+    <figure class="shot-single">
+      <img src="/shots/ui-03.webp" width="489" height="1064" alt="Voltsy alert card reading Battery at 80 percent with a note to unplug, above a low battery reminder row." loading="lazy">
+      <figcaption>The unplug nudge and the low battery reminder, as they appear in the app.</figcaption>
+    </figure>
+      <div class="panel" style="margin-top:18px;">
+        <h3>It fires on the crossing, once</h3>
+        <p>Voltsy compares each reading to the one before it. The unplug alert fires the moment a
+        charging battery crosses your upper threshold, and then not again while it stays there. Opening
+        the app on an already full battery triggers nothing, because there was no crossing to see.</p>
+      </div>
+      <div class="panel">
+        <h3>Three alerts, not a stream</h3>
+        <p>Unplug at the upper threshold. A heads up when an unplugged battery drops through the lower
+        one. A note when the system thermal state climbs into the serious range, which is the moment
+        heat is actually worth acting on.</p>
+      </div>
+      <div class="panel">
+        <h3>Free thresholds, and your own</h3>
+        <p>The free version uses fixed thresholds of 80% and 15%. Voltsy Pro, a one time purchase, lets
+        you set both yourself, so a 90% ceiling or a 25% floor is a setting rather than a wish.</p>
+      </div>
+      <p class="note">One caveat worth knowing: since iOS 17 apps read the charge level in steps of about
+      five percent, so the nudge lands at the first reading at or above your threshold, not at the exact
+      percent your status bar shows.</p>
+    <div class="cta">
+      <a class="aso-badge" href="https://apps.apple.com/app/id6778094814?ct=unplug&amp;mt=8" data-aso-cta="unplug">
+        <img src="/app-store-badge.svg" width="165" height="55" alt="Download Voltsy on the App Store">
+      </a>
+    </div>
+
+    <div class="rule" aria-hidden="true"></div>
+    <h2>Keep reading</h2>
+    <div class="reads">
+      <a href="/iphone-battery-health.html"><b>iPhone Battery Health: What an App Can and Cannot See</b><span>Where Apple keeps the real number, and the four things iOS hands an app instead.</span></a>
+      <a href="/extend-iphone-battery-life.html"><b>How to Charge Your iPhone to Extend Battery Life</b><span>Heat, the 20 to 80 zone, slow charging and the settings that do the work for you.</span></a>
+      <a href="/iphone-battery-percentage-widget.html"><b>How to Show the Battery Percentage on Your iPhone</b><span>The status bar toggle, Apple's Batteries widget and the charging Live Activity.</span></a>
+      <a href="/battery-health-apps-compared.html"><b>iPhone Battery Health Apps Compared, Honestly</b><span>Which tool tells you what, including the ones that beat Voltsy at their job.</span></a>
+      <a href="/battery-pet-app.html"><b>A Battery Pet App for iPhone: Meet Volt</b><span>Volt's eight moods, the care streak and the five badges, with exact triggers.</span></a>
+    </div>
+      <p><a class="back" href="/">Back to the Voltsy home page</a></p>
+    </div>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+    <div class="cta">
+      <a class="aso-badge" href="https://apps.apple.com/app/id6778094814?ct=unplug-footer&amp;mt=8" data-aso-cta="unplug-footer">
+        <img src="/app-store-badge.svg" width="165" height="55" alt="Download Voltsy on the App Store">
+      </a>
+    </div>
+      <div class="flinks">
+        <a href="/">Home</a>
+        <a href="/iphone-battery-health.html">Battery health</a>
+        <a href="/extend-iphone-battery-life.html">Charging guide</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/support.html">Support</a>
+      </div>
+      <p class="note">Voltsy 1.3.0 for iPhone, iOS 26 or later. Free to download, with an optional
+      one time Voltsy Pro upgrade. Voltsy reads only the public battery information iOS offers to
+      apps and never claims to read Apple's measured battery health.</p>
+      <p class="note">Copyright 2026 Levin Schwab.
+      <a href="mailto:levin.schwab@gmx.de">levin.schwab@gmx.de</a></p>
+    </div>
+  </footer>
+<!-- Funnel-Messung: Seitenaufruf -> App-Store-Klick.
+     Vercel Web Analytics ist cookielos; das Ereignis nennt nur den Platz des Knopfes. -->
+<script defer src="/_vercel/insights/script.js"></script>
+<script>
+(function(){
+  window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href*="apps.apple.com"]');
+    if(!a)return;
+    va('event',{name:'appstore_click',data:{
+      placement:a.getAttribute('data-aso-cta')||'unmarked',
+      page:location.pathname
+    }});
+  },{capture:true,passive:true});
+})();
+</script>
+</body>
+</html>

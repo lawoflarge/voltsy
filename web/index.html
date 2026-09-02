@@ -3,50 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Voltsy — Battery Life Buddy</title>
-<meta name="description" content="Meet Volt, the cute battery companion that reacts live to your iPhone's charge and helps you build healthy charging habits.">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Is Voltsy free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Voltsy is free to download and includes Volt the battery mascot, charge alerts, the daily care streak, and battery care tips. Voltsy Pro is an optional one-time €4.99 purchase that removes ads, unlocks full charge history, adds custom alert thresholds, and gives unlimited streak freezes. There is no subscription." } },
-    { "@type": "Question", "name": "Can Voltsy show my iPhone's real battery health?", "acceptedAnswer": { "@type": "Answer", "text": "No. iOS does not let any third-party app read Apple's official battery health percentage or cycle count, and Voltsy never pretends to. Every figure Voltsy shows is a clearly-labeled on-device estimate from your own usage, and the app points you to Settings, where Apple lists the real numbers." } },
-    { "@type": "Question", "name": "What does Voltsy do?", "acceptedAnswer": { "@type": "Answer", "text": "Voltsy makes battery care fun with Volt, a battery mascot that looks happy in the healthy zone, sleepy when low, and dramatic at 1%. It sends charge alerts to unplug near 80%, tracks a daily care streak, shows charge history, and offers science-based care tips to extend your battery's life." } },
-    { "@type": "Question", "name": "Does Voltsy collect my data?", "acceptedAnswer": { "@type": "Answer", "text": "No. Voltsy has no account and no backend server, so your charge history, streak, and battery estimates are stored and processed entirely on your iPhone. Voltsy uses only Apple's public battery APIs. The free version shows ads, and Voltsy Pro removes them with a one-time purchase." } },
-    { "@type": "Question", "name": "What is the healthy 20–80% battery zone?", "acceptedAnswer": { "@type": "Answer", "text": "Keeping a lithium-ion battery between roughly 20% and 80% reduces the stress that full charges and deep drains put on it over time. Voltsy shows a friendly ring for this green zone, sends a nudge to unplug around 80%, and warns you when you are running low." } },
-    { "@type": "Question", "name": "What does Voltsy Pro include?", "acceptedAnswer": { "@type": "Answer", "text": "Voltsy Pro is a one-time €4.99 purchase with no subscription. It removes all ads, unlocks your full charge history, lets you set custom alert thresholds for charging and low battery, and gives unlimited Power Nap freezes so a missed day never breaks your care streak. You buy it once and keep it forever." } }
-  ]
-}
-</script>
-<style>
-  :root { --green:#33CC66; --ink:#0e1a13; --muted:#5b6b61; --bg:#f6fbf7; --card:#ffffff; }
-  * { box-sizing:border-box; }
-  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-         color:var(--ink); background:var(--bg); line-height:1.6; }
-  .wrap { max-width:680px; margin:0 auto; padding:48px 20px 64px; }
-  .badge { font-size:64px; line-height:1; }
-  h1 { font-size:40px; margin:14px 0 6px; letter-spacing:-0.02em; }
-  .tag { font-size:20px; color:var(--muted); margin:0 0 28px; }
-  .card { background:var(--card); border:1px solid #e6efe9; border-radius:18px; padding:22px 24px; margin:18px 0; }
-  .card h2 { margin:0 0 8px; font-size:18px; }
-  .card p { margin:0; color:var(--muted); }
-  a.btn { display:inline-block; text-decoration:none; font-weight:600; color:#fff; background:var(--green);
-          padding:12px 22px; border-radius:999px; margin-top:6px; }
-  .links { display:flex; gap:14px; flex-wrap:wrap; margin-top:8px; }
-  .links a { color:var(--green); text-decoration:none; font-weight:600; }
-  footer { color:var(--muted); font-size:14px; margin-top:40px; border-top:1px solid #e6efe9; padding-top:18px; }
-  footer a { color:var(--muted); }
-  .geo-def { font-size:15px; color:var(--muted); margin:0 0 28px; }
-  .faq { margin-top:32px; }
-  .faq h2 { font-size:24px; margin:0 0 16px; }
-  .faq-item { background:var(--card); border:1px solid #e6efe9; border-radius:18px; padding:20px 24px; margin:12px 0; }
-  .faq-item h3 { margin:0 0 8px; font-size:16px; }
-  .faq-item p { margin:0; color:var(--muted); }
-  .updated { margin-top:12px; font-size:13px; color:var(--muted); }
-</style>
+<title>Voltsy: iPhone Battery Care App with an 80% Unplug Reminder</title>
+<meta name="description" content="Free iPhone app. Volt reacts to your charge, nudges you to unplug near 80% and keeps a care streak. No fake battery health numbers, because iOS does not allow them.">
+<link rel="stylesheet" href="/aso-tokens.css">
+<link rel="stylesheet" href="/style.css">
 <!-- aso:head:start -->
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -99,66 +59,305 @@
 }
 </script>
 <!-- aso:head:end -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can Voltsy show my iPhone's real battery health?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, and no other iPhone app can either. iOS does not hand third party apps Apple's measured battery health percentage, cycle count or capacity. Voltsy reads four things: the charge level, whether you are charging or unplugged, whether Low Power Mode is on, and the system thermal state. For the official figure open Settings, then Battery, then Battery Health and Charging."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Voltsy free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Voltsy is free to download and includes Volt, the charge alerts, the daily care streak, the badges, the care tips and seven days of charge history. The free version shows ads on the Care Tips and Charge History screens. Voltsy Pro is a one time purchase, 4.99 US dollars in the United States, that removes the ads, extends the history to 90 days, lets you set your own alert thresholds and gives unlimited Power Nap streak freezes. There is no subscription."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Voltsy show my battery percentage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "While your iPhone is charging, yes: the Live Activity on the Lock Screen and in the Dynamic Island shows the percentage and an estimated time to the target. Voltsy's Home Screen widget shows Volt, whose body fill is your charge level, without printing the number. If you want the number itself on the Home Screen, Apple's own Batteries widget is the right tool."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does Voltsy read a different number than the status bar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Since iOS 17 the system reports the charge level to apps in steps of roughly five percent, so Voltsy may read 80% while the status bar shows 78%. That is the operating system rounding, not a fault in the app, and no app can work around it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the 20% to 80% zone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Charging to full puts a lithium ion cell into a high voltage state, and running it near empty stresses it too. Time spent between roughly 20% and 80% is the gentlest on the battery. Voltsy draws a ring that fills with the share of today you spent inside that band, and nudges you to unplug when you charge past the upper threshold."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Voltsy nag me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An alert fires only on the crossing edge, so a level that sits where it is never triggers a second notification, and a cold start on an already full or already low battery triggers nothing at all. There are three alerts in total: unplug at the upper threshold, a heads up at the lower one, and a note when the system thermal state climbs into the serious range."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Voltsy collect my data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no account and no server. Your readings, streak and history stay on your iPhone, plus a private app group container so the widget and Live Activity can render. The free version serves ads through Google AdMob and asks for consent where that is required; Voltsy Pro removes them. The privacy policy has the detail."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
-  <div class="wrap">
-    <div class="badge">⚡️</div>
-    <h1>Voltsy</h1>
-    <p class="tag">Meet Volt — your battery's new best friend.</p>
-
-    <p class="geo-def" data-geo-definition>Voltsy is a free iPhone app built around Volt, a cute battery mascot that reacts live to your charge level. It nudges you to keep a healthy 20–80% range, turns good charging habits into a daily streak, and shows only clearly-labeled on-device estimates — never fake battery-health numbers.</p>
-
-    <div class="card">
-      <h2>What is Voltsy?</h2>
-      <p>Volt is a cute battery companion that reacts live to your iPhone's charge level, helps you keep a
-      healthy 20–80% routine, and turns good charging habits into a daily streak. Everything stays on your
-      device — Voltsy has no account and no backend.</p>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brandmark" href="/"><img src="/icon-192.png" width="30" height="30" alt=""> Voltsy</a>
+      <nav>
+        <a href="/iphone-battery-health.html">Battery health</a>
+        <a href="/extend-iphone-battery-life.html">Charging guide</a>
+        <a href="/battery-pet-app.html">Meet Volt</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="wrap hero">
+      <span class="eyebrow">Free iPhone app</span>
+      <h1>iPhone Battery Care App with an Unplug Reminder at 80%</h1>
+      <p class="lede">Voltsy is a free iPhone app built around Volt, a battery character who reacts to
+      your charge level, nudges you to unplug near 80%, and never invents a battery health number.</p>
+    <div class="cta">
+      <a class="aso-badge" href="https://apps.apple.com/app/id6778094814?ct=hero&amp;mt=8" data-aso-cta="hero">
+        <img src="/app-store-badge.svg" width="165" height="55" alt="Download Voltsy on the App Store">
+      </a>
+      <p class="cta-meta">Free. iPhone, iOS 26 or later. Optional one time Pro upgrade.</p>
+    </div>
     </div>
 
-    <div class="card">
-      <h2>Honest by design</h2>
-      <p>Voltsy uses only Apple's public battery APIs. It never claims to read your exact battery health
-      percentage or cycle count — every care figure is a clearly-labelled on-device estimate.</p>
-    </div>
-
-    <a class="btn" href="https://apps.apple.com/us/app/voltsy-battery-care-buddy/id6778094814">Download on the App Store</a>
-
-    <section class="faq" id="faq">
-      <h2>Frequently asked questions</h2>
-      <div class="faq-item">
-        <h3>Is Voltsy free?</h3>
-        <p>Yes. Voltsy is free to download and includes Volt the battery mascot, charge alerts, the daily care streak, and battery care tips. Voltsy Pro is an optional one-time €4.99 purchase that removes ads, unlocks full charge history, adds custom alert thresholds, and gives unlimited streak freezes. There is no subscription.</p>
+    <div class="wrap-wide">
+      <div class="shots">
+    <figure class="">
+      <img src="/shots/ui-01.webp" width="489" height="1064" alt="Voltsy home screen with Volt the battery character inside a green ring, an energetic mood and a 12 day care streak.">
+      <figcaption>Volt reacts to your charge</figcaption>
+    </figure>
+    <figure class="">
+      <img src="/shots/ui-02.webp" width="489" height="1064" alt="Eight Volt moods side by side: energetic, content, charging, sleepy, low, hot, full and power nap." loading="lazy">
+      <figcaption>Eight moods, one glance</figcaption>
+    </figure>
+    <figure class="">
+      <img src="/shots/ui-03.webp" width="489" height="1064" alt="Voltsy alert card reading Battery at 80 percent with a note to unplug, above a low battery reminder row." loading="lazy">
+      <figcaption>One nudge at the threshold</figcaption>
+    </figure>
+    <figure class="">
+      <img src="/shots/ui-04.webp" width="489" height="1064" alt="Voltsy care screen with the green zone ring, a Battery Care score of 92, a care streak and three badges." loading="lazy">
+      <figcaption>A habit, not a diagnosis</figcaption>
+    </figure>
       </div>
-      <div class="faq-item">
+    </div>
+
+    <div class="wrap">
+      <div class="rule" aria-hidden="true"></div>
+      <h2>Honest about what iOS allows</h2>
+      <p>Most iPhone battery apps put a health percentage on the screen. iOS does not give any of them
+      that number. Here is the whole of what an app is handed, and what it is not.</p>
+      <div class="panel">
+        <ul class="facts">
+          <li class="yes"><span class="mark" aria-hidden="true">+</span><span><b>Charge level</b>
+            <span class="d">Reported in steps of about five percent since iOS 17. This is what fills Volt's body.</span></span></li>
+          <li class="yes"><span class="mark" aria-hidden="true">+</span><span><b>Charge state</b>
+            <span class="d">Charging, unplugged or full. This is what triggers the unplug nudge.</span></span></li>
+          <li class="yes"><span class="mark" aria-hidden="true">+</span><span><b>Low Power Mode</b>
+            <span class="d">On or off. Volt takes a Power Nap when it is on.</span></span></li>
+          <li class="yes"><span class="mark" aria-hidden="true">+</span><span><b>System thermal state</b>
+            <span class="d">Nominal, fair, serious or critical. Not a temperature in degrees.</span></span></li>
+          <li class="no"><span class="mark" aria-hidden="true">x</span><span><b>Battery health percentage</b>
+            <span class="d">Private to iOS. Settings has it. No app does.</span></span></li>
+          <li class="no"><span class="mark" aria-hidden="true">x</span><span><b>Cycle count and capacity</b>
+            <span class="d">Also private. An app that prints one is estimating.</span></span></li>
+        </ul>
+      </div>
+      <p class="note" style="margin-top:14px;"><a href="/iphone-battery-health.html">Read the full
+      breakdown of iPhone battery health and what apps can see</a>.</p>
+
+      <div class="rule" aria-hidden="true"></div>
+      <h2>The zone Volt cares about</h2>
+      <p>Charging to full pushes a lithium ion cell into a high voltage state, and running it near empty
+      stresses it from the other side. The middle is the cheap place to live.</p>
+    <div class="zone" role="img" aria-label="A charge level bar. Below 20 percent and above 80 percent are the stressful ends. The band from 20 to 80 percent is the easy zone.">
+      <div class="seg low"><b>0 to 20%</b><span>Deep drains wear the cell</span></div>
+      <div class="seg ok"><b>20 to 80%</b><span>The easy zone. Volt stays green here</span></div>
+      <div class="seg high"><b>80 to 100%</b><span>High voltage, more strain when held</span></div>
+    </div>
+      <p class="note">Voltsy draws a ring that fills with the share of today you spent inside that band,
+      and awards the Goldilocks badge on a day you stayed inside it for at least 90% of the readings.</p>
+
+      <div class="rule" aria-hidden="true"></div>
+      <h2>What Voltsy actually does</h2>
+      <div class="grid two">
+        <div class="panel">
+          <h3>A character instead of a dashboard</h3>
+          <p>Volt has eight moods driven by real readings: energetic, content, charging, sleepy, low,
+          hot, full and Power Nap. His body fill is your charge level, so one look is enough.</p>
+        </div>
+        <div class="panel">
+          <h3>Three alerts, each fired once</h3>
+          <p>Unplug when charging crosses the upper threshold, a heads up when you drop through the
+          lower one, and a note when the system thermal state climbs into the serious range. Each fires
+          on the crossing edge only, so a held level never nags.</p>
+        </div>
+        <div class="panel">
+          <h3>A daily care streak</h3>
+          <p>A healthy day extends the streak. A bad day spends a Power Nap freeze instead of breaking
+          it. Five badges recognise specific habits, from staying in the zone to not sitting at 100%
+          for hours.</p>
+        </div>
+        <div class="panel">
+          <h3>Charge history and a Live Activity</h3>
+          <p>A line of your charge level over time, seven days on the free tier and 90 with Pro. While
+          you charge, a Live Activity on the Lock Screen and in the Dynamic Island shows the percentage
+          and an estimated time to the target.</p>
+        </div>
+      </div>
+
+      <div class="rule" aria-hidden="true"></div>
+      <h2>The Battery Care score, and what it is not</h2>
+      <p>Voltsy scores your <b>habits</b>, not your hardware. It starts at 100 and subtracts for time
+      spent hot, for discharges that end near empty, and for hours held at full beyond a one hour grace.
+      Until Voltsy has watched about three charge cycles of your own use, it shows no number at all
+      rather than a made up one.</p>
+      <p class="note">If you want your battery's measured condition, that lives in Settings, then
+      Battery, then Battery Health and Charging. Voltsy points you there inside the app.</p>
+    <div class="cta">
+      <a class="aso-badge" href="https://apps.apple.com/app/id6778094814?ct=features&amp;mt=8" data-aso-cta="features">
+        <img src="/app-store-badge.svg" width="165" height="55" alt="Download Voltsy on the App Store">
+      </a>
+    </div>
+
+      <div class="rule" aria-hidden="true"></div>
+      <h2>Who it is for</h2>
+      <div class="grid two">
+        <div class="panel">
+          <h3>You charge overnight and worry about it</h3>
+          <p>Sleeping plugged in is not the problem. Sitting at 100% for hours is the cost, and Voltsy
+          counts those hours honestly instead of scaring you about them.</p>
+        </div>
+        <div class="panel">
+          <h3>Your iPhone has no Charge Limit setting</h3>
+          <p>The stop at 80% option arrived with iPhone 15. On an older iPhone a nudge at the threshold
+          is the closest thing available.</p>
+        </div>
+        <div class="panel">
+          <h3>You bounce between 3% and a frantic charge</h3>
+          <p>The low alert and the No Drama badge push toward top ups instead of deep drains.</p>
+        </div>
+        <div class="panel">
+          <h3>You are tired of fake numbers</h3>
+          <p>Voltsy labels every figure as an on device estimate and shows nothing when it does not
+          have enough data to be honest.</p>
+        </div>
+      </div>
+
+    <div class="rule" aria-hidden="true"></div>
+    <h2>Keep reading</h2>
+    <div class="reads">
+      <a href="/iphone-battery-health.html"><b>iPhone Battery Health: What an App Can and Cannot See</b><span>Where Apple keeps the real number, and the four things iOS hands an app instead.</span></a>
+      <a href="/extend-iphone-battery-life.html"><b>How to Charge Your iPhone to Extend Battery Life</b><span>Heat, the 20 to 80 zone, slow charging and the settings that do the work for you.</span></a>
+      <a href="/iphone-battery-percentage-widget.html"><b>How to Show the Battery Percentage on Your iPhone</b><span>The status bar toggle, Apple's Batteries widget and the charging Live Activity.</span></a>
+      <a href="/unplug-at-80-percent-reminder.html"><b>A Reminder to Unplug Your iPhone at 80%</b><span>Why 80% matters, and when a nudge beats the built in Charge Limit.</span></a>
+      <a href="/battery-health-apps-compared.html"><b>iPhone Battery Health Apps Compared, Honestly</b><span>Which tool tells you what, including the ones that beat Voltsy at their job.</span></a>
+      <a href="/battery-pet-app.html"><b>A Battery Pet App for iPhone: Meet Volt</b><span>Volt's eight moods, the care streak and the five badges, with exact triggers.</span></a>
+    </div>
+
+      <div class="rule" aria-hidden="true"></div>
+      <section class="faq">
+        <h2>Frequently asked questions</h2>
+      <div class="panel">
         <h3>Can Voltsy show my iPhone's real battery health?</h3>
-        <p>No. iOS does not let any third-party app read Apple's official battery health percentage or cycle count, and Voltsy never pretends to. Every figure Voltsy shows is a clearly-labeled on-device estimate from your own usage, and the app points you to Settings, where Apple lists the real numbers.</p>
+        <p>No, and no other iPhone app can either. iOS does not hand third party apps Apple's measured battery health percentage, cycle count or capacity. Voltsy reads four things: the charge level, whether you are charging or unplugged, whether Low Power Mode is on, and the system thermal state. For the official figure open Settings, then Battery, then Battery Health and Charging.</p>
       </div>
-      <div class="faq-item">
-        <h3>What does Voltsy do?</h3>
-        <p>Voltsy makes battery care fun with Volt, a battery mascot that looks happy in the healthy zone, sleepy when low, and dramatic at 1%. It sends charge alerts to unplug near 80%, tracks a daily care streak, shows charge history, and offers science-based care tips to extend your battery's life.</p>
+      <div class="panel">
+        <h3>Is Voltsy free?</h3>
+        <p>Yes. Voltsy is free to download and includes Volt, the charge alerts, the daily care streak, the badges, the care tips and seven days of charge history. The free version shows ads on the Care Tips and Charge History screens. Voltsy Pro is a one time purchase, 4.99 US dollars in the United States, that removes the ads, extends the history to 90 days, lets you set your own alert thresholds and gives unlimited Power Nap streak freezes. There is no subscription.</p>
       </div>
-      <div class="faq-item">
+      <div class="panel">
+        <h3>Does Voltsy show my battery percentage?</h3>
+        <p>While your iPhone is charging, yes: the Live Activity on the Lock Screen and in the Dynamic Island shows the percentage and an estimated time to the target. Voltsy's Home Screen widget shows Volt, whose body fill is your charge level, without printing the number. If you want the number itself on the Home Screen, Apple's own Batteries widget is the right tool.</p>
+      </div>
+      <div class="panel">
+        <h3>Why does Voltsy read a different number than the status bar?</h3>
+        <p>Since iOS 17 the system reports the charge level to apps in steps of roughly five percent, so Voltsy may read 80% while the status bar shows 78%. That is the operating system rounding, not a fault in the app, and no app can work around it.</p>
+      </div>
+      <div class="panel">
+        <h3>What is the 20% to 80% zone?</h3>
+        <p>Charging to full puts a lithium ion cell into a high voltage state, and running it near empty stresses it too. Time spent between roughly 20% and 80% is the gentlest on the battery. Voltsy draws a ring that fills with the share of today you spent inside that band, and nudges you to unplug when you charge past the upper threshold.</p>
+      </div>
+      <div class="panel">
+        <h3>Does Voltsy nag me?</h3>
+        <p>An alert fires only on the crossing edge, so a level that sits where it is never triggers a second notification, and a cold start on an already full or already low battery triggers nothing at all. There are three alerts in total: unplug at the upper threshold, a heads up at the lower one, and a note when the system thermal state climbs into the serious range.</p>
+      </div>
+      <div class="panel">
         <h3>Does Voltsy collect my data?</h3>
-        <p>No. Voltsy has no account and no backend server, so your charge history, streak, and battery estimates are stored and processed entirely on your iPhone. Voltsy uses only Apple's public battery APIs. The free version shows ads, and Voltsy Pro removes them with a one-time purchase.</p>
+        <p>There is no account and no server. Your readings, streak and history stay on your iPhone, plus a private app group container so the widget and Live Activity can render. The free version serves ads through Google AdMob and asks for consent where that is required; Voltsy Pro removes them. The privacy policy has the detail.</p>
       </div>
-      <div class="faq-item">
-        <h3>What is the healthy 20–80% battery zone?</h3>
-        <p>Keeping a lithium-ion battery between roughly 20% and 80% reduces the stress that full charges and deep drains put on it over time. Voltsy shows a friendly ring for this green zone, sends a nudge to unplug around 80%, and warns you when you are running low.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What does Voltsy Pro include?</h3>
-        <p>Voltsy Pro is a one-time €4.99 purchase with no subscription. It removes all ads, unlocks your full charge history, lets you set custom alert thresholds for charging and low battery, and gives unlimited Power Nap freezes so a missed day never breaks your care streak. You buy it once and keep it forever.</p>
-      </div>
-    </section>
-
-    <footer>
-      <div class="links">
-        <a href="/privacy.html">Privacy Policy</a>
+      </section>
+    <div class="cta">
+      <a class="aso-badge" href="https://apps.apple.com/app/id6778094814?ct=faq&amp;mt=8" data-aso-cta="faq">
+        <img src="/app-store-badge.svg" width="165" height="55" alt="Download Voltsy on the App Store">
+      </a>
+    </div>
+    </div>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+    <div class="cta">
+      <a class="aso-badge" href="https://apps.apple.com/app/id6778094814?ct=footer&amp;mt=8" data-aso-cta="footer">
+        <img src="/app-store-badge.svg" width="165" height="55" alt="Download Voltsy on the App Store">
+      </a>
+    </div>
+      <div class="flinks">
+        <a href="/">Home</a>
+        <a href="/iphone-battery-health.html">Battery health</a>
+        <a href="/extend-iphone-battery-life.html">Charging guide</a>
+        <a href="/privacy.html">Privacy</a>
         <a href="/support.html">Support</a>
       </div>
-      <p style="margin-top:12px;">© 2026 Levin Schwab · <a href="mailto:levin.schwab@gmx.de">levin.schwab@gmx.de</a></p>
-      <p class="updated">Last updated: 2026-07-23</p>
-    </footer>
-  </div>
+      <p class="note">Voltsy 1.3.0 for iPhone, iOS 26 or later. Free to download, with an optional
+      one time Voltsy Pro upgrade. Voltsy reads only the public battery information iOS offers to
+      apps and never claims to read Apple's measured battery health.</p>
+      <p class="note">Copyright 2026 Levin Schwab.
+      <a href="mailto:levin.schwab@gmx.de">levin.schwab@gmx.de</a></p>
+    </div>
+  </footer>
+<!-- Funnel-Messung: Seitenaufruf -> App-Store-Klick.
+     Vercel Web Analytics ist cookielos; das Ereignis nennt nur den Platz des Knopfes. -->
+<script defer src="/_vercel/insights/script.js"></script>
+<script>
+(function(){
+  window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href*="apps.apple.com"]');
+    if(!a)return;
+    va('event',{name:'appstore_click',data:{
+      placement:a.getAttribute('data-aso-cta')||'unmarked',
+      page:location.pathname
+    }});
+  },{capture:true,passive:true});
+})();
+</script>
 </body>
 </html>

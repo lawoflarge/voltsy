@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iPhone Battery Health: What an App Can and Cannot See</title>
+<meta name="description" content="iOS gives no app your battery health percentage or cycle count. Where the real number lives, the four readings apps do get, and what that means for battery apps.">
+<link rel="stylesheet" href="/aso-tokens.css">
+<link rel="stylesheet" href="/style.css">
+<!-- aso:head:start -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#40B860">
+<meta name="apple-itunes-app" content="app-id=6778094814, app-argument=https://voltsy.vercel.app/support.html">
+<link rel="canonical" href="https://voltsy.vercel.app/support.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Voltsy">
+<meta property="og:url" content="https://voltsy.vercel.app/support.html">
+<meta property="og:image" content="https://voltsy.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Voltsy: Battery Care Buddy on the App Store">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://voltsy.vercel.app/og-image.png">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<!-- aso:head:end -->
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brandmark" href="/"><img src="/icon-192.png" width="30" height="30" alt=""> Voltsy</a>
+      <nav>
+        <a href="/iphone-battery-health.html">Battery health</a>
+        <a href="/extend-iphone-battery-life.html">Charging guide</a>
+        <a href="/battery-pet-app.html">Meet Volt</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="wrap hero">
+      <span class="eyebrow">Guide</span>
+      <h1>iPhone Battery Health: What an App Can and Cannot See</h1>
+      <p class="lede">The short answer: iOS keeps your battery's measured condition to itself. Any
+      iPhone app that prints a health percentage is estimating from the same four public readings
+      every other app gets.</p>
+
+      <div class="rule" aria-hidden="true"></div>
+      <h2>Where the real number lives</h2>
+      <p>Apple measures your battery and shows the result in Settings. That is the figure to trust, and
+      it costs nothing.</p>
+      <ol class="steps">
+        <li>Open <b>Settings</b>.</li>
+        <li>Tap <b>Battery</b>.</li>
+        <li>Tap <b>Battery Health and Charging</b>.</li>
+      </ol>
+      <p>You get maximum capacity as a percentage of new, and on iPhone 15 and later the cycle count,
+      the manufacture date and the date of first use as well.</p>
+
+      <div class="rule" aria-hidden="true"></div>
+      <h2>What iOS hands an app instead</h2>
+      <p>Four readings. That is the entire surface, and it is the same for every app in the App Store,
+      including this one.</p>
+      <div class="panel">
+        <ul class="facts">
+          <li class="yes"><span class="mark" aria-hidden="true">+</span><span><b>Charge level</b>
+            <span class="d">A fraction from 0 to 1, rounded to about five percent steps.</span></span></li>
+          <li class="yes"><span class="mark" aria-hidden="true">+</span><span><b>Charge state</b>
+            <span class="d">Charging, unplugged, full or unknown.</span></span></li>
+          <li class="yes"><span class="mark" aria-hidden="true">+</span><span><b>Low Power Mode</b>
+            <span class="d">A simple on or off flag.</span></span></li>
+          <li class="yes"><span class="mark" aria-hidden="true">+</span><span><b>Thermal state</b>
+            <span class="d">One of four coarse levels, never a temperature in degrees.</span></span></li>
+          <li class="no"><span class="mark" aria-hidden="true">x</span><span><b>Maximum capacity</b>
+            <span class="d">Not exposed to apps.</span></span></li>
+          <li class="no"><span class="mark" aria-hidden="true">x</span><span><b>Cycle count</b>
+            <span class="d">Not exposed to apps.</span></span></li>
+          <li class="no"><span class="mark" aria-hidden="true">x</span><span><b>Voltage, current, mAh</b>
+            <span class="d">Not exposed to apps.</span></span></li>
+        </ul>
+      </div>
+
+      <div class="rule" aria-hidden="true"></div>
+      <h2>Why the level itself is fuzzy</h2>
+      <p>Until iOS 16 the charge level came to apps in one percent steps. From iOS 17 it arrives rounded
+      to roughly five percent, and Apple's own developer support has confirmed that the value is an
+      approximation and that the degree of rounding is not part of the contract. There is no workaround.
+      An app can read 80% while your status bar shows 78%, and both are behaving correctly.</p>
+      <p>That single fact rules out a whole class of claims. An app cannot measure how much charge went
+      into your battery this session with any precision, so it cannot derive a trustworthy capacity from
+      it either.</p>
+
+      <div class="rule" aria-hidden="true"></div>
+      <h2>If you want the deep numbers, use a computer</h2>
+      <p>Plugged into a Mac or a PC, your iPhone exposes diagnostic data that no app on the phone can
+      reach. Tools such as coconutBattery on macOS, iMazing, or 3uTools on Windows read design capacity,
+      current capacity and cycle count over the cable. For checking a used iPhone before you buy or
+      sell it, that is a better tool than anything on the App Store, Voltsy included.</p>
+
+      <div class="rule" aria-hidden="true"></div>
+      <h2>So what is a battery app good for?</h2>
+      <p>Not diagnosis. Habit. The things that measurably shorten a lithium ion battery's life are heat,
+      long stretches held at full, and repeated deep drains, and all three are visible through the four
+      readings above. That is where Voltsy works.</p>
+    <figure class="shot-single">
+      <img src="/shots/ui-04.webp" width="489" height="1064" alt="Voltsy care screen with the green zone ring, a Battery Care score of 92, a care streak and three badges." loading="lazy">
+      <figcaption>The Battery Care score rates your charging habits over the last days. It is not a measurement of the battery's capacity, and Voltsy shows no number until it has watched about three cycles of your use.</figcaption>
+    </figure>
+      <p style="margin-top:16px;">Volt reacts to your charge in eight moods, nudges you once when you
+      charge past the threshold, and keeps a daily streak going. Every figure is labelled as an on device
+      estimate, and the app links you straight to Settings for Apple's measured number.</p>
+    <div class="cta">
+      <a class="aso-badge" href="https://apps.apple.com/app/id6778094814?ct=health&amp;mt=8" data-aso-cta="health">
+        <img src="/app-store-badge.svg" width="165" height="55" alt="Download Voltsy on the App Store">
+      </a>
+    </div>
+
+    <div class="rule" aria-hidden="true"></div>
+    <h2>Keep reading</h2>
+    <div class="reads">
+      <a href="/extend-iphone-battery-life.html"><b>How to Charge Your iPhone to Extend Battery Life</b><span>Heat, the 20 to 80 zone, slow charging and the settings that do the work for you.</span></a>
+      <a href="/iphone-battery-percentage-widget.html"><b>How to Show the Battery Percentage on Your iPhone</b><span>The status bar toggle, Apple's Batteries widget and the charging Live Activity.</span></a>
+      <a href="/unplug-at-80-percent-reminder.html"><b>A Reminder to Unplug Your iPhone at 80%</b><span>Why 80% matters, and when a nudge beats the built in Charge Limit.</span></a>
+      <a href="/battery-health-apps-compared.html"><b>iPhone Battery Health Apps Compared, Honestly</b><span>Which tool tells you what, including the ones that beat Voltsy at their job.</span></a>
+      <a href="/battery-pet-app.html"><b>A Battery Pet App for iPhone: Meet Volt</b><span>Volt's eight moods, the care streak and the five badges, with exact triggers.</span></a>
+    </div>
+      <p><a class="back" href="/">Back to the Voltsy home page</a></p>
+    </div>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+    <div class="cta">
+      <a class="aso-badge" href="https://apps.apple.com/app/id6778094814?ct=health-footer&amp;mt=8" data-aso-cta="health-footer">
+        <img src="/app-store-badge.svg" width="165" height="55" alt="Download Voltsy on the App Store">
+      </a>
+    </div>
+      <div class="flinks">
+        <a href="/">Home</a>
+        <a href="/iphone-battery-health.html">Battery health</a>
+        <a href="/extend-iphone-battery-life.html">Charging guide</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/support.html">Support</a>
+      </div>
+      <p class="note">Voltsy 1.3.0 for iPhone, iOS 26 or later. Free to download, with an optional
+      one time Voltsy Pro upgrade. Voltsy reads only the public battery information iOS offers to
+      apps and never claims to read Apple's measured battery health.</p>
+      <p class="note">Copyright 2026 Levin Schwab.
+      <a href="mailto:levin.schwab@gmx.de">levin.schwab@gmx.de</a></p>
+    </div>
+  </footer>
+<!-- Funnel-Messung: Seitenaufruf -> App-Store-Klick.
+     Vercel Web Analytics ist cookielos; das Ereignis nennt nur den Platz des Knopfes. -->
+<script defer src="/_vercel/insights/script.js"></script>
+<script>
+(function(){
+  window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href*="apps.apple.com"]');
+    if(!a)return;
+    va('event',{name:'appstore_click',data:{
+      placement:a.getAttribute('data-aso-cta')||'unmarked',
+      page:location.pathname
+    }});
+  },{capture:true,passive:true});
+})();
+</script>
+</body>
+</html>

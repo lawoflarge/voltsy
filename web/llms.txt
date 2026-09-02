@@ -1,14 +1,14 @@
 # Voltsy: Battery Care Buddy
 
-> Voltsy is a free iPhone app that turns battery care into a game with Volt, a cute battery mascot that reacts live to your charge level. It nudges you to keep a healthy 20–80% range, sends charge alerts, tracks a daily care streak, and shows charge history. Every battery figure is a clearly-labeled on-device estimate — Voltsy never claims to read Apple's official battery health or cycle count.
+> Voltsy is a free iPhone app that turns battery care into a game with Volt, a cute battery mascot that reacts live to your charge level. It nudges you to keep a healthy 20% to 80% range, sends charge alerts, tracks a daily care streak, and shows charge history. Every battery figure is a clearly-labeled on-device estimate. Voltsy never claims to read Apple's official battery health or cycle count.
 
 ## App
 - [Download on the App Store](https://apps.apple.com/us/app/voltsy-battery-care-buddy/id6778094814): Free, iOS, Utilities.
-- [Pricing](https://voltsy.vercel.app/pricing.md): Free to download; Voltsy Pro is a one-time €4.99 purchase (no subscription).
-- [FAQ](https://voltsy.vercel.app/#faq): Battery-health honesty, the 20–80% zone, privacy, and pricing.
+- [Pricing](https://voltsy.vercel.app/pricing.md): Free to download; Voltsy Pro is a one-time purchase, 4.99 US dollars in the United States (no subscription).
+- [FAQ](https://voltsy.vercel.app/#faq): Battery-health honesty, the 20% to 80% zone, privacy, and pricing.
 
 ## Features
-- Volt, a battery mascot that reacts live to your charge — happy in the healthy zone, sleepy when low, dramatic at 1%, munching while charging.
+- Volt, a battery mascot that reacts live to your charge, so he is happy in the healthy zone, sleepy when low, dramatic at 1%, munching while charging.
 - Charge alerts to unplug around 80% and a heads-up when you are running low.
 - Daily care streak with a free Power Nap freeze, plus achievements for good charging habits.
 - Charge history, a Home Screen widget, and a Lock Screen / Dynamic Island Live Activity.

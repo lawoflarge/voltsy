@@ -1,6 +1,6 @@
 # Voltsy Pricing
 
-Voltsy: Battery Care Buddy — iOS (iPhone).
+Voltsy: Battery Care Buddy for iOS (iPhone).
 
 ## Free
 - Price: $0
@@ -8,7 +8,7 @@ Voltsy: Battery Care Buddy — iOS (iPhone).
 - The free version is supported by ads.
 
 ## Voltsy Pro
-- Price: €4.99 — one-time purchase (non-consumable). No subscription, no recurring charge.
+- Price: 4.99 US dollars in the United States, a one-time purchase (non-consumable). No subscription, no recurring charge.
 - Unlocks: zero ads forever, full charge history, custom alert thresholds, and unlimited Power Nap streak freezes.
 
 ## Notes
