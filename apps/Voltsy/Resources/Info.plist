@@ -51,5 +51,7 @@
             <string>cstr6suwn9.skadnetwork</string>
         </dict>
     </array>
+	<key>CrossPromotionBaseURL</key>
+	<string>$(CROSS_PROMOTION_BASE_URL)</string>
 </dict>
 </plist>

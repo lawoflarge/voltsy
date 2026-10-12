@@ -94,7 +94,7 @@ struct HomeView: View {
                     Menu {
                         NavigationLink { CareTipsView() } label: { Label("Care Tips", systemImage: "lightbulb") }
                         NavigationLink { ChargeHistoryView(store: model.storeForHistory) } label: { Label("Charge History", systemImage: "chart.xyaxis.line") }
-                        NavigationLink { AlertSettingsView(prefs: model.alertPrefs) { showingPaywall = true } } label: { Label("Alerts", systemImage: "bell.badge") }
+                        NavigationLink { AlertSettingsView(isActive: !showingPaywall, prefs: model.alertPrefs) { showingPaywall = true } } label: { Label("Alerts", systemImage: "bell.badge") }
                         NavigationLink { TrustView() } label: { Label("Honest by design", systemImage: "checkmark.shield") }
                         if consent.privacyOptionsRequired {
                             Button { Task { await consent.presentPrivacyOptions() } } label: {
